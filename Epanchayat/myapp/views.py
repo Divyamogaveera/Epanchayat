@@ -11,7 +11,6 @@ from django.contrib import messages
 def index(request):
     context={
     'variable1':"this is divya",
-    'variable2':"this is depression"
     }
     return render(request,'index.html',context)
 
