@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Service-A</title>
+    <link rel="stylesheet" href="fcf-assets/css/fcf.materialize.min.css">
+    <script>
+        function validateForm()
+        {
+            let x=document.forms["myForm"]["Name"].value;
+            if(x=="")
+            {
+                alert("UserName must be filled out");
+                return false;
+            }
+            let y=document.forms["myForm"]["Email"].value;
+            if(y=="")
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            let z=document.forms["myForm"]["phone"].value;
+            if(z=="")
+            {
+                alert("Please Enter Mobile Number ");
+                return false;
+            }
+            let a=document.forms["myForm"]["GramPanchayat"].value;
+            if(a=="")
+            {
+                alert("Gram Panchayat must be filled out");
+                return false;
+            }
+            let b=document.forms["myForm"]["rate"].value;
+            if(b=="")
+            {
+                alert("Please slect your Feedback Range");
+                return false;
+            }
+
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;500&display=swap');  
+        form
+        {
+            padding: 20px;
+            margin-top: 0%;
+        }
+        #fcf-button
+        {
+            border-color: darkcyan;
+            font-family: fantasy;
+            display: flex;
+            margin: auto;
+            font-size: 90%;
+        }
+        nav
+     {
+         margin: 0px;
+         padding-top: 0px;
+         box-sizing: border-box;
+         font-family: 'Big Shoulders Stencil Display', cursive;
+         width: 100%;
+         height: 8%;
+         background-color:  #505d61;
+         line-height: 70px;
+         /*padding: 0px 100px;*/
+         position: fixed;
+        /* z-index: 1;*/
+     }
+        nav .logo
+        {
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding-top: 0%;
+        }
+        nav .logo
+        {
+            float: left;
+            color:#fff;
+            text-transform: uppercase;
+        }
+        nav ul
+        {
+            float:right ;
+            display:inline-flex;
+        }
+        nav ul li
+        {
+            display:inline-flex;
+            list-style: none;
+            margin-top: -7%;
+            padding-top: 0%;
+        }
+        nav ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            padding: 0px 32px;
+            padding-top: 0%
+        }
+        nav ul li a:hover
+        {
+            color: #c0d96f;
+        }
+        nav ul li .active
+        {
+            color: #c0d96f;
+        }
+        nav button
+        {
+            margin-top: 13px;
+            margin-left: 2px;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+        #ur
+        {
+            margin-top: -30px;
+            margin-left: 2px;
+            position: absolute;
+            top: 0%;
+            left: 4%;
+            color: cyan;
+        }
+        #ur :hover
+        {
+            color: crimson;
+        }
+        h1
+        {
+            
+            
+            background-color:rgb(212, 128, 17) ;
+            text-align: center;
+        }
+        input
+        {
+            margin-bottom: 2%;
+            border-color: cyan;
+        }
+        select
+        {
+            border-color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <nav>
+        <div class="logo">
+            <a class="navbar-brand" href="/applyservice">
+               <!--- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-arrow-left"></i>
+                </button>-->
+            </a>
+            <a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
+        </div>
+        <ul>
+            <li><a href="/" >Home</a></li>
+            <li><a href="" class="active">RationCard</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/complaints">Complaints</a></li>
+        </ul>
+    </nav>
+<div style="max-width:500px;padding:30px;padding-top:0px">
+    <div id="fcf-form">
+        <form name="myForm" class="col s12 fcf-form-class" method="POST" action="/applyservice/1/" onsubmit="return validateForm()" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {% if messages %} 
+            {% for message in messages %}
+                <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="hotpink"><h3> {{message}}</h3> </font></small>
+            {% endfor %}
+        {% endif %}
+            <h1><span style="font-style: normal; font-weight: 400;">Ration &nbsp; Form</span></h1>
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="text" name="service_name" id="service_name" maxlength="60" data-validate-field="service_name" value="Ration Card">
+                  <label for="service_name">Service name</label>
+              </div>
+          </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="user_name" id="user_name" maxlength="60" data-validate-field="user_name" value="{{user}}">
+                    <label for="user_name">-User name</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="file" name="user_image" id="user_image" data-validate-field="user_image">
+                  <label for="user_image">User Image</label>
+              </div>
+          </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="firstname" id="firstname" maxlength="100" data-validate-field="firstname" value="{{user.first_name}}">
+                    <label for="firstname">First_name</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="text" name="lastname" id="lastname" maxlength="100" data-validate-field="lastname" value="{{user.first_name}}">
+                  <label for="lastname">Last_name</label>
+              </div>
+          </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="phone" id="phone" maxlength="100" data-validate-field="phone" value="{{user.phone}}" placeholder="Enter your mobile number">
+                    <label for="phone">-Your mob</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="email" name="email" id="email" maxlength="100" data-validate-field="email" value="{{user.email}}" placeholder="yourmail@gmail.com">
+                  <label for="Email">Email</label>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+               <label for="gender">Select your gender</label>
+               <select name="gender" id="gender">
+                 <option value="Male">Male</option>
+                 <option value="Female">Female</option>
+                 <option value="I prefer not to say">I prefer not to say</option>
+               </select>
+            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+              <input type="number" name="wardno" id="wardno" maxlength="100" data-validate-field="wardno" value="{{user.wardno}}" placeholder="enter ward number">
+              <label for="wardno">Ward NO:</label>
+          </div>
+      </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="grampanchayat" id="grampanchayat" maxlength="100" data-validate-field="grampanchayat" value="{{user.grampanchayat}}">
+                    <label for="grampanchayat">-Grampanchayat</label>
+                </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="number" name="phone" id="phone" maxlength="12" data-validate-field="phone" value="{{user.phone}}" placeholder="enter your mobile number">
+                  <label for="phone">Mobile:</label>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+                <input type="text" name="village" id="village" maxlength="122" data-validate-field="village" value="{{user.village}}" placeholder="enter your village">
+                <label for="village">Village:</label>
+            </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+              <input type="text" name="city" id="city" maxlength="122" data-validate-field="city" value="kundapura" placeholder="enter your city ">
+              <label for="city">Talluk:</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+            <input type="text" name="state" id="state" maxlength="122" data-validate-field="state" value="Karnataka" placeholder="enter your mobile number">
+            <label for="state">State:</label>
+        </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+          <input type="number" name="pin_code" id="pin_code" maxlength="6" data-validate-field="pin_code" value="" placeholder="enter pincode">
+          <label for="pin_code">Pincode:</label>
+      </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+        <input type="number" name="adhar_no" id="adhar_no" maxlength="12" data-validate-field="adhar_no" value="" placeholder="enter your adhar">
+        <label for="adhar_no">Adhar number:</label>
+    </div>
+</div>
+<div class="row">
+  <div class="input-field col s12">
+      <input type="file" required name="adhar_img" id="adhar_img" data-validate-field="adhar_img" value="">
+      <label for="adhar_img">Adhar Image:</label>
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12">
+      <input type="file" required name="incom_proof" id="incom_proof" data-validate-field="incom_proof" value="" placeholder="incom_proof">
+      <label for="incom_proof">Adhar Image:</label>
+  </div>
+</div>
+<div class="row">
+  <div class="input-field col s12">
+      <input type="file" multiple required name="vote" id="vote" data-validate-field="vote" value="Vote" placeholder="voter id ">
+      <label for="vote">vote Image:</label><font size=3>(multiple)</font>
+  </div>
+</div>
+<!--<div class="row">
+  <div class="input-field col s12">
+      <input type="date"  name="apply_date" id="apply_date" data-validate-field="apply_date" value="2021-05-05" placeholder="apply_date ">
+      <label for="apply_date">apply_date:</label>
+  </div>
+</div>-->
+
+            <!---<div class="row">
+                <div class="input-field col s12">
+                    <label  for="grampanchayat">:GramPanchayat</label><br>
+                        &nbsp;&emsp;&emsp;&emsp;
+                        &emsp;&emsp;&emsp;
+                        <select name="grampanchayat" multiple size="3" required min=1 max=6>
+                            <option value="aloor" >Aloor</option>
+                            <option value="harkur">harkur</option>
+                            <option value="Kundapura">Kundapura</option>
+                            <option value="jadkal">Jadkal</option>
+                            <option value="nada">nada</option>
+                            <option value="kota">kota</option>
+                        </select>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <button id="fcf-button" class="btn waves-effect waves-light btn-large col s12" type="submit" name="submit">Send Feedback</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

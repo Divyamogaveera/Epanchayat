@@ -1,0 +1,144 @@
+<html>
+<style>
+    html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #11b339e1;
+}
+
+.form-signin {
+  position:absolute;
+  left: 50%;
+  width: 50%;
+  max-width: 270px;
+  max-height: 480px;
+  padding: 25px;
+  margin: auto;
+  background-color: #b2c6c942;
+  box-shadow: 1px 1px 20px 0;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  width: 60%;
+  border: 2px solid rgba(14, 46, 223, 0.63);
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 20px;
+  border-bottom-right-radius: 500;
+  border-bottom-left-radius: 500;
+  border-color: dodgerblue;
+  box-shadow: 0 0 8px 0 dodgerblue;
+  transition: .3s;
+}
+
+.form-signin input[type="password"] {
+  width: 60%;
+  border: 2px solid rgba(14, 46, 223, 0.63);
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 20px;
+  border-top-left-radius: 500;
+  border-top-right-radius: 500;
+  border-color: dodgerblue;
+  box-shadow: 0 0 8px 0 dodgerblue;
+  transition: .3s;
+}
+    .bd-placeholder-img {
+      font-size: 2.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 900px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.9rem;
+      }
+    }
+    .form-signin button[type="submit"]{
+      background-color: #342297;
+      border-radius: 30px;
+      color: greenyellow;
+      font-size: 16px;
+      width: 150px;
+      height: 40px;
+    }
+    .navbar navbar-light bg-light{
+      position: static;
+    }
+  </style>
+
+  
+  <!-- Custom styles for this template -->
+  <link href="signin.css" rel="stylesheet">
+</head>
+<body class="text-center" >
+  <nav class="navbar navbar-light bg-dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="static\img\home.png"  alt="" width="35" height="44" class="d-inline-block align-text-top">
+        <strong>HOME</strong>
+      </a>
+    </div>
+  </nav>
+  <img src="static\img\pc.jpg" alt="d" width="2000">
+<main class="form-signin">
+  
+<form method="POST" action="/logins">
+  {% csrf_token %}
+  <img class="mb-4" src="static\img\logo1.png" alt="" width="84" height="66">
+  <h2 class="h3 mb-3 fw-normal">Log in to Epanchayat</h2>
+
+  <div class="form-floating">
+    <label for="floatingInput">User Name:</label>
+    <input type="text" class="form-control" name="username" id="floatingInput" placeholder="Enter your User Name">
+  </div>
+  <div class="form-floating">
+    <label for="floatingPassword">Password:&nbsp;&nbsp;</label>
+    <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
+    
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" onclick="myfunction()"  value="remember-me" > Show Password
+    </label>
+  </div>
+  <script type="text/javascript">
+  function myfunction(){
+    var show=document.getElementById("floatingPassword")
+    if(show.type==="password"){
+      show.type="text";
+    }
+    else
+    {
+      show.type="password";
+    }
+  }
+  </script>
+  <br><center><button class="w-100 btn btn-lg btn-primary" type="submit">LOGIN</button></center>
+</form>
+</main>
+
+
+  
+</body>
+</html>

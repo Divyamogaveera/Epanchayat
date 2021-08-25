@@ -1,0 +1,14 @@
+#id_gender{
+    list-style-type: none;
+}
+#id_job_panchayat{
+    list-style-type: none;
+    display: inline-flex;
+}
+li
+{
+    padding-left: 10px;
+}
+#id_job_panchayat>li{
+    margin-top: 10px;
+}

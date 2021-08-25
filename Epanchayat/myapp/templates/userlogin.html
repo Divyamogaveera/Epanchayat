@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user login</title>
+    <style>
+      #fp
+      {
+        color:rgb(87, 110, 151);
+      }
+      #sg
+      {
+        margin-left: 750px;
+        color: darkblue;
+        padding-top: 0%;
+       margin-top: 1%;
+
+      }
+      #sg:hover
+      {
+        color: whitesmoke
+      }
+      #fp:hover
+      {
+        color: crimson;
+      }
+        .body{background-color: rgb(89, 218, 205);}
+        .form-floating {
+            /*position:fixed;*/
+            background-color: rgb(19, 190, 233);;
+            top: 96px;
+            left: 30%;
+            width: 50%;
+            max-width: 500px;
+            max-height: 480px;
+            padding: 25px;
+            margin: auto;
+            color: magenta;
+            /*background-color: #b2c6c942;*/
+            box-shadow: 0 10px 10px -5px;
+          }
+          
+          .form-floating input[type="text"] {
+            width: 60%;
+            border: 2px solid rgba(100, 6, 207, 0.877);
+            border-radius: 6px;
+            padding: 5px;
+            margin-bottom: 20px;
+            border-bottom-right-radius: 500;
+            border-bottom-left-radius: 500;
+            border-color: rgb(39, 11, 143);
+            box-shadow: 0 0 8px 0 rgb(71, 10, 236);
+            transition: .3s;
+          }
+        .form-floating input[type="password"] {
+            width: 60%;
+            border: 2px solid rgba(100, 6, 207, 0.877);
+            border-radius: 6px;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-top-left-radius: 500;
+            border-top-right-radius: 500;
+            border-color: rgb(39, 11, 143);
+            box-shadow: 0 0 8px 0 rgb(71, 10, 236);
+            transition: .3s;
+          }
+          .form-floating input[type="submit"]
+          {
+            background-color: #342297;
+            border-radius: 30px;
+            color: greenyellow;
+            font-size: 16px;
+            width: 150px;
+            height: 40px;
+          }
+        .er{color: red;}
+        #logo
+        {
+        position: absolute;
+        right: 10%;
+        font-size: 15px;
+        top: 4%;
+        }
+        a
+        {
+            text-decoration: none;
+
+        }
+        a:hover
+        {
+          color: whitesmoke;
+        }
+        nav
+        {
+            background-color: rgb(206, 151, 206);
+            margin-bottom: 1%;
+            padding-top: 1%;
+            padding-bottom: -10%;
+            border-color: rgb(200, 255, 0);
+            border-style: solid;
+            width: 100%;
+        }
+        .navbar-nav a
+        
+    </style>
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">&emsp;
+          <a class="navbar-brand" href="/">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+              <i class="fa fa-arrow-left"></i>
+            </button>
+          </a>&ensp;&nbsp;
+              <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+              <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+              <a class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+              <a class="nav-item nav-link" id="sg" href="/signup"><b><u><font size=3>Register</font></u></b></a>
+              <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a></font>
+        </div>
+      </div>
+    </nav>
+
+</head>
+<body class="body">
+    <div class="form-floating">
+        <center>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %} 
+            {% endif %} 
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <h2 class="h3 mb-3 fw-normal"><font color='yellow'>Log in to Epanchayat </font></h2>
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p class="er">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+                {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <br><font color='darkpink'>{{fm.errors|striptags}} </font><br><br>
+                {% endfor %}
+                <div class="checkbox mb-3">
+                    <label>
+                    <input type="checkbox" onclick="myfunction()"  value="remember-me" > Show Password
+                    </label>
+                </div>
+                <script type="text/javascript">
+                function myfunction(){
+                    var show=document.getElementById("id_password")
+                    if(show.type==="password"){
+                    show.type="text";
+                    }
+                    else
+                    {
+                    show.type="password";
+                    }
+                }
+                </script><br>
+                <input type="submit" value="login"><br>
+                <!--<p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>-->
+                <a href="{% url 'signup' %}">Signup</a>
+                
+
+            </form>
+        </center>
+        <a id="fp" class="text-right" href="{% url 'password_reset' %}" style="text-decoration: none;">Forgot password?</a>
+    </div>
+    
+</body>
+</html>

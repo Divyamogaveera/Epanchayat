@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Password Change</title>
+    <style>
+        #id1
+         {
+            background-color: turquoise;
+            position: fixed;
+            top: 0%;
+            width: 100%;
+        }
+        .er{color: rgb(230, 15, 15);}
+        hr.one {
+            width: 100%;
+            border: 1px solid rgb(0, 255, 255);
+            background: rgb(167, 29, 57);
+            margin-bottom: 6px;
+        }
+
+        hr.two {
+            width: 100%;
+            border: 1px solid rgb(0, 255, 255);
+            background: rgb(167, 29, 57);
+            margin-top: 0px;
+        }
+        #bt
+        {
+            margin-bottom: 5px;
+        }
+        #a1
+        {
+            margin-top: 3px;
+        }
+    </style>
+    <!--back-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body id="id1">
+  <hr class="one">
+    <div class="container">
+        <p>
+            <a href="/profile" class="btn btn-default btn-sm">
+                <span id="a1" class="glyphicon glyphicon-arrow-left"></span> Back
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-home"></span> Home
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a  href="/userdetails">
+                <button id="bt" type="button" class="btn btn-secondary pull-right">
+                  <span class="glyphicon glyphicon-user"></span>
+                </button>
+            </a>
+        </p> 
+    </div>
+    <hr class="two">
+</body>
+<body>
+  <center><br><br><br>
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="er">{{error}}</p>
+                {% endfor %}
+            {% endif %}
+
+        {% for fm in form %}
+        {{fm.label_tag}} {{fm}} <font color='red'>{{fm.errors|striptags}} </font><br><br>
+        {% endfor %}
+
+        {% if messages %}
+        {% for message in messages %}
+            <p class="er">
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert" >
+                <font color='cerulean'><strong >{{ message }}</strong></font>
+                <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                </div>
+            </p>
+        {% endfor %} 
+    {% endif %}
+
+        <input type="submit" value="Save">&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="reset"  value="Reset">
+        
+        <!---{{form.as_p}}-->
+    </form>
+    <!---<a href="/profile"><button>Back</button></a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+    <br>
+    <a href="{% url 'logout' %}"><button>logout</button></a>
+ </center>
+
+</body>
+</html>

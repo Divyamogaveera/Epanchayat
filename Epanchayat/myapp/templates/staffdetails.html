@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <style>
+            .er{color: red;}
+            #id_gender
+            {
+                height: 27px;
+            }
+            form input[type="number"]
+            {
+                width: 28%;
+                height: 20px;
+                left: 50px;
+                border: 1px solid rgba(100, 6, 207, 0.877);
+                border-radius: 5px;
+                padding: 3px;
+                border-spacing: 1%;
+                margin-bottom: 15px;
+                margin-bottom: 0px;
+                border-color: rgb(24, 11, 143);
+                box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+                transition: .3s;
+            }
+            #logo
+            {
+                position: fixed;
+                right: 3%;
+                text-decoration: none;
+                position: fixed;
+                z-index: 999;
+            }
+            #id1
+            {
+                text-decoration: none;
+            }
+            nav
+            {
+            background-color: rgb(206, 151, 206);
+            margin-bottom: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            border-color: rgb(200, 255, 0);
+            border-style: solid;
+            }
+            body
+            {
+                background-color: greenyellow;
+            }
+            form
+            {
+                background-color:white;
+                font-family:fantasy ;
+                border-color: rgb(24, 11, 143);
+                box-shadow: 0 0 8px 0 rgb(78, 10, 236);
+            }
+            form input[type="text"]
+            {
+                width: 30%;
+                height: 20px;
+                left: 50px;
+                border: 1px solid rgba(100, 6, 207, 0.877);
+                border-radius: 5px;
+                padding: 3px;
+                border-spacing: 1%;
+                margin-bottom: 15px;
+                margin-bottom: 0px;
+                border-color: rgb(24, 11, 143);
+                box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+                transition: .3s;
+            }
+            form input[type="email"]
+            {
+                width: 28%;
+                height: 20px;
+                left: 50px;
+                border: 1px solid rgba(100, 6, 207, 0.877);
+                border-radius: 5px;
+                padding: 3px;
+                border-spacing: 1%;
+                margin-bottom: 15px;
+                margin-bottom: 0px;
+                border-color: rgb(24, 11, 143);
+                box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+                transition: .3s;
+            }
+            form input[type="submit"]
+            {
+                width: 30%;
+                border-radius: 4px;
+                background-color: blue;
+                padding: 1%;
+            }
+            select
+            {
+                width: 28%;
+                height: 80px;
+                left: 50px;
+                border: 1px solid rgba(100, 6, 207, 0.877);
+                border-radius: 5px;
+                padding: 3px;
+                border-spacing: 1%;
+                margin-bottom: 15px;
+                margin-bottom: 0px;
+                border-color: rgb(24, 11, 143);
+                box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+                transition: .3s;
+            }
+            #scroll
+            {
+                margin: 4px 4px;
+                padding: 4px;
+                background-color: rgb(167, 224, 167);
+                width: 388px;
+                height: 100px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                border-style: solid;
+            }
+             a.fa fa-user
+            {
+                position: fixed;
+                right: 3%;
+                text-decoration: none;
+                position: fixed;
+                z-index: 999;
+                border-color: yellow;
+            }
+           
+    
+    </style>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">&emsp;
+                  <a id="id1" class="navbar-brand" href="/staffprofile">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                      <i class="fa fa-arrow-left"></i>
+                    </button>
+                  </a>&ensp;&nbsp;
+                      <a id="id1" class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+                      <a  id="id1"class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+                      <a id="id1" class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+                      <a id="id1" class="nav-item nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out"></i>logout</a>
+                     <!-- <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>-->
+                </div>
+              </div>
+            </nav>
+    
+    </head>
+    <body>
+        <center>
+            <u><h1>Dashboard</h1></u>
+            <marquee scrollamount="10"><strong>WELCOME{{user}}</strong></marquee>
+
+        {% if messages %} 
+            {% for message in messages %}
+                <small {% if message.tags %} class="{{message.tags}}" {% endif %}> <h2><center><font color="darkblack">{{message}} </font></center></h2></small>
+            {% endfor %}
+        {% endif %}
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="er">{{error}}</p>
+                {% endfor %}
+            {% endif %}
+            {% for fm in form %}
+                <br>{{fm.label_tag}} {{fm}} <font color='red'>{{fm.errors|striptags}} </font><br><br>
+            {% endfor %}
+            <input type="submit" value="SaveChanges"><br>
+            {% if users != None %}
+                <h3>List of users</h3>
+                {% if user in users  %}
+                    <div id="scroll">
+                        {% for user in users %}
+                            <a href="{% url 'pusers' user.user_id %}">{{user.username}}</a><br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+            <br>
+        </form>
+        <br>
+        <h3>if you want to chnge password click<a href="{% url 'staffchangepass2' %}"><strong>here<strong></a></h3>
+    </center>
+</body>
+

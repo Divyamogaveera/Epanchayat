@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Profile</title>
+  <style>
+    #logo
+    {
+      position: fixed;
+      right: 3%;
+    }
+    a
+    {
+        text-decoration: none;
+    }
+    nav
+    {
+      background-color: lightsalmon;
+      margin-bottom: 2%;
+      padding-top: 1%;
+      padding-bottom: 1%;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">&emsp;
+      <a class="navbar-brand" href="/">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+          <i class="fa fa-arrow-left"></i>
+        </button>
+      </a>&ensp;&nbsp;
+          <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+          <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+          <a class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+          <a class="nav-item nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>&ensp;&nbsp;
+          <a id="logo" class="nav-item nav-link" href="/staffdetails"><i class="fa fa-user"></i></a>
+    </div>
+  </div>
+</nav>
+
+<body>
+  
+
+
+<a href="{% url 'stafflogout' %}">logoutstaff</a>
+
+{% if messages %} 
+      {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+      {% endfor %}
+{% endif %}
+<p><strong>{{user}}</strong>, now you are the panchayat user</p>
+<a href="{% url 'staffchangepass' %}">Change Password</a>
+</body>
+</html>

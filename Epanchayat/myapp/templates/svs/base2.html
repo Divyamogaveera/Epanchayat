@@ -1,0 +1,163 @@
+<style>
+    #logo
+    {
+      position:fixed;
+      right: 3%;
+    }
+    a
+    {
+        text-decoration: none;
+    }
+    #navbarNavAltMarkup
+    {
+      background-color: rgb(165, 180, 248);
+      margin-bottom: 2%;
+      padding-top: 0%;
+      padding-bottom: 0%;
+      border-color: lime;
+      border-style: solid;
+      position: fixed;
+      top: 0%;
+      width: 100%;
+      z-index: 999; 
+    }
+    /*.btn
+    {
+      cursor: pointer;
+      border: 1px solid #3498db;
+      background-color: transparent;
+      height: 40px;
+      width: 150px;
+      color: #3498db;
+      font-size: 1.5em;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+      top: 60%;
+      position: fixed;
+      right: 0%;
+      top: 93%;
+    }*/
+    h1
+    {
+        padding-bottom: 1%;
+    }
+    #id4
+    {
+        margin: -5px;
+        padding: 0px;
+        list-style: none;
+        display: inline-flex;
+        margin-right: -5px;
+    }
+    ul li
+    {
+        float: left;
+        width: 154px;
+        height: 40px;
+        background-color: rgb(189, 92, 152);
+        opacity: .9;
+        line-height: 40px;
+        text-align: center;
+        font-size: 15px;
+        margin-right: 2px;    
+    }
+    body
+    {
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
+    }
+    ul li a
+    {
+        text-decoration: none;
+        color: white;
+        display: block;
+       
+    }
+    ul li a:hover
+    {
+        background-color: yellowgreen;
+    }
+    ul li ul li
+    {
+        display: none;
+    }
+    ul li:hover ul li
+    {
+        display: block;
+
+    }
+    #abcd
+    {
+        background-color: yellowgreen;
+    }
+    #abcde{
+      width: 100%;
+      top: 0px;
+      bottom: 0px;
+      display: inline-flex;
+    }
+  </style>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'svs/css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+        
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">&emsp;
+              <a class="navbar-brand" href="/">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-arrow-left"></i>
+                </button>
+              </a>&ensp;&nbsp;
+                  <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+                  <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+                  <a class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+                  <a class="nav-item nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>&ensp;&nbsp;
+                  <a class="nav-item nav-link" href="/complaints"><i class="fa fa-flag" aria-hidden="true"></i>Complaint</a>&ensp;&nbsp;
+                  <a  id="logo" class="nav-item nav-link" href="/userdetails">profile&nbsp;<i class="fa fa-user"  aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </nav>-->
+
+        <div id="abcde">
+          <ul id="id4">
+            <li><a href="/">Home</a>
+              <!--<li><a href="/" id="abcd"><b>Panchayat Service</b></a></li>-->
+              <li><a href="/aboutus">about</a></li>
+              <li><a href="/contact">contact</a>
+                  <!--<ul>
+                      <li><a href="tel:+916360716008">(+91)6360716008</a></li>
+                      <li><a href="https://wa.me/6360716008">6360716008</a></li>
+                      <li><a href="mailto:epanchayatservice@gmail.com">epanchayatservice@gmail.com</a></li>
+                  </ul>-->
+              </li>
+              <!--<li><a href="https://gpdp.nic.in/">gpdp</a></li>-->
+              <li><a href="/complaints">Complaint</a></li>
+              <li><a href="/feedback">Feedback</a></li>
+
+          </ul>
+        </div>
+</head>
+<body>
+
+
+    <div class="container mt-8" >
+        <h1 class="text-center alert-dark">Panchayat_services</h1>
+        {% block content %}{% endblock content %}
+    </div>
+    <script src="{% static 'svs/js/jquery.js' %}"></script>
+    <script src="{% static 'svs/js/popper.js' %}"></script>
+    <script src="{% static 'svs/js/bootstrap.js' %}"></script>
+
+    
+</body>
+</html>

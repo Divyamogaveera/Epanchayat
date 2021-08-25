@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            height: 100%;
+          }
+          #fp
+          {
+            color: red;
+          }
+          #fp:hover
+          {
+            color: salmon;
+          }
+          body {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            display: flex;
+            align-items: center;
+            padding-top: -270px;
+            padding-bottom: 30px;
+            background-color: #378a8de1;
+          }
+        .er{color: red;}
+        .form-floating {
+          position:fixed;
+          top: 10px;
+          left: 40%;
+          width: 80%;
+          max-width: 290px;
+          max-height: 470px;
+          padding: 10px;
+          margin: auto;
+          background-color: #b2c6c942;
+          box-shadow: 1px 1px 20px 0;
+        }
+        
+        .form-floating input[type="text"] {
+          width: 60%;
+          border: 2px solid rgba(100, 6, 207, 0.877);
+          border-radius: 6px;
+          padding: 8px;
+          margin-bottom: 15px;
+          border-bottom-right-radius: 500;
+          border-bottom-left-radius: 500;
+          border-color: rgb(39, 11, 143);
+          box-shadow: 0 0 8px 0 rgb(71, 10, 236);
+          transition: .3s;
+        }
+        .form-floating input[type="password"] {
+          width: 60%;
+          border: 2px solid rgba(100, 6, 207, 0.877);
+          border-radius: 6px;
+          padding: 8px;
+          margin-bottom: 9px;
+          border-top-left-radius: 500;
+          border-top-right-radius: 500;
+          border-color: rgb(39, 11, 143);
+          box-shadow: 0 0 8px 0 rgb(71, 10, 236);
+          transition: .3s;
+        }
+        .form-floating input[type="submit"]{
+          background-color: #342297;
+          border-radius: 30px;
+          color: greenyellow;
+          font-size: 16px;
+          width: 150px;
+          height: 40px;
+        }
+        .container-fluid{
+          position: absolute;
+          top: 40%;
+        }
+        .kar{
+          padding: 0px;
+          margin-top: -2%;
+          margin-bottom: 1%;
+        }
+        form
+        {
+          margin-top: 1%;
+        }
+
+    </style>
+<link href="signin.css" rel="stylesheet">
+</head>
+<body class="text-center" >
+  <nav class="navbar navbar-light bg-dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="static\img\home.png"  alt="home" width="35" height="44" class="d-inline-block align-text-top"><br>
+        <strong>HOME</strong>
+      </a>
+    </div>
+  </nav>
+  <p class="kar"><img src="static\img\kar.jpg" alt="d" width="1368" height="658"></p>
+ </body>
+<main class="form-signin">
+<body>
+  <div class="form-floating">
+  <center>
+    {% if messages %} 
+      {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><h3><font color='red'>{{message}}</font> </h3> </small>
+      {% endfor %}
+    {% endif %}
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        <img class="mb-3" src="static/img/logo1.png" alt="logo" width="84" height="66">
+        
+        <h2 class="h3 mb-2 fw-normal">Log in to Epanchayat <a class="reset" href=""><font size=3><i id="re" class="fa fa-repeat"></i></font></a> </h2>
+
+        {% if form.non_field_errors %}
+          {% for error in form.non_field_errors %}
+            <p class="er">{{error}}</p>
+          {% endfor %}
+        {% endif %}
+
+        {% for fm in form %}
+        {{fm.label_tag}} {{fm}} <font color='red'>{{fm.errors|striptags}}</font> <br>
+        {% endfor %}
+
+        <input type="submit" value="login">
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" onclick="myfunction()"  value="remember-me" > Show Password
+            </label>
+          </div>
+        <script type="text/javascript">
+        function myfunction(){
+          var show=document.getElementById("id_password")
+          if(show.type==="password"){
+            show.type="text";
+          }
+          else
+          {
+            show.type="password";
+          }
+        }
+        </script>
+        
+    </form>
+    </center>
+    <a id="fp" class="ms-2" href="{% url 'password_reset' %}" style="text-decoration: none;">Forgot password?</a>
+  </div>
+    
+</body>
+</html>

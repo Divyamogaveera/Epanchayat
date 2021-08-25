@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <title>{%  block title %}{% endblock title %}EPANCHAYAT</title>
+    <style>
+        ul
+        {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        ul li
+        {
+            float: left;
+            width: 180px;
+            height: 40px;
+            background-color: rgb(189, 92, 152);
+            opacity: .8;
+            line-height: 40px;
+            text-align: center;
+            font-size: 15px;
+            margin-right: 2px;
+            
+        }
+        body
+        {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+        }
+        ul li a
+        {
+            text-decoration: none;
+            color: white;
+            display: block;
+           
+        }
+        ul li a:hover
+        {
+            background-color: yellowgreen;
+        }
+        ul li ul li
+        {
+            display: none;
+        }
+        ul li:hover ul li
+        {
+            display: block;
+        }
+        #abcd
+        {
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="/" id="abcd"><b>Panchayat Service</b></a></li>
+        <li><a href="/aboutus">about</a></li>
+        <li><a href="">contact</a>
+            <ul>
+                <li><a href="tel:+916360716008">&nbsp;(+91)6360716008</a></li>
+                <li><a href="https://wa.me/6360716008">&nbsp;6360716008</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a href="mailto:epanchayatservice@gmail.com">&nbsp;epanchayatservice@gmail.com</a></li>
+            </ul>
+        </li>
+        <li><a href="https://gpdp.nic.in/">gpdp</a></li>
+        <li><a href="/logout">logout</a></li>
+    </ul>
+</body>
+</html>

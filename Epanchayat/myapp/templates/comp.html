@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliant Box</title>
+    <style>
+     @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;500&display=swap'); 
+     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); 
+     /*font-family: 'Roboto', sans-serif;*/ 
+     .btn
+    {
+      cursor: pointer;
+      border: 1px solid #3498db;
+      background-color: transparent;
+      height: 45px;
+      width: 100%;
+      color: #3498db;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+      padding: 10px;
+      word-spacing: 10px;
+      font-size: 24px;
+      border-radius: 8px;
+      font-family: 'montserrat';
+      transition: .3s ease background-color;
+    }
+    .btn:hover
+    {
+        background-color: rgb(196, 165, 224);
+    }
+    form
+    {
+        padding: 30px;
+        padding-top: 20%;
+        margin-left: 3%;
+        margin-right: 5%;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    section
+    {
+        align-items: center;
+        display: flex;
+        width: 130%;
+        height: 80%;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 0%;
+    }
+    .container
+    {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 15px;
+        padding-top: 0%;
+        box-shadow: 0px 0px 20px #3e28b936;
+        background-color: white;
+        border-radius: 3px;
+        margin-bottom: 15px;
+        margin-top: -12%;
+        margin-left: 50%;
+        position:static;
+        
+    }
+    .form-group
+    {
+        width: 100%;
+        margin-top: 20px;
+        font-size: 20px;
+
+    }
+    .form-group[data-error] input
+    .form-group textarea
+    {
+        width: 100%;
+        padding: 5px;
+        font-size: 80px;
+        border: 1px solid rgba(128, 128, 128, 0.199);
+        margin-top: 5px;
+       
+    }
+    textarea
+    {
+        resize: vertical;
+    }
+    #status
+    {
+        width: 80%;
+        max-width: 500px;
+        text-align: center;
+        padding: 10px;
+        margin: 0 auto;
+        border-radius: 8px;
+
+    }
+    #status.success
+    {
+        background-color: greenyellow;
+        animation: status 4s ease forwards;
+    }
+    #status.error
+    {
+        background-color: red;
+        color: white;
+        animation: status 4s ease forwards;
+    }
+    @keyframes status
+    {
+        0%
+        {
+            opacity: 1;
+            pointer-events: all;
+        }
+        90%
+        {
+            opacity: 1;
+            pointer-events: all;
+        }
+        100%
+        {
+            opacity: 0;
+            pointer-events: none;
+        }    
+
+    }
+     .form-group input
+     {
+        border-color: #2427c9;
+        color: #c92432;
+        background: white;
+     }
+     .form-group textarea
+     { 
+        border-color: #2427c9;
+        color: #c92432;
+        background: white;
+     }
+     .form-group select
+     {
+        border-color: #2427c9;
+        color: #c92432;
+        background: white;
+     }
+     nav
+     {
+         margin: 0px;
+         padding-top: -1px;
+         box-sizing: border-box;
+         font-family: 'Big Shoulders Stencil Display', cursive;
+         width: 100%;
+         height: 8%;
+         background-color:  #505d61;
+         line-height: 60px;
+         /*padding: 0px 100px;*/
+         position: fixed;
+        /* z-index: 1;*/
+     }
+     nav .logo
+     {
+         font-size: 50px;
+         font-weight: bold;
+         letter-spacing: 1.5px;
+         padding-top: 0%;
+     }
+     nav .logo
+     {
+         float: left;
+         color:#fff;
+         text-transform: uppercase;
+     }
+     nav ul
+     {
+         float:right ;
+         display:inline-flex;
+     }
+    nav ul li
+    {
+        display:inline-flex;
+        list-style: none;
+        margin-top: -6%;
+        padding-top: 0%;
+    }
+    nav ul li a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 0px 32px;
+        padding-top: 0%
+    }
+    nav ul li a:hover
+    {
+        color: #c0d96f;
+    }
+    nav ul li .active
+    {
+        color: #c0d96f;
+    }
+    h1
+    {
+        background-color:rgb(42, 136, 190) ;
+        /*font-family:'Big Shoulders Stencil Display',cursive;*/
+        font-family: sans-serif;
+    }
+    img
+    {
+        margin-top: 4%;
+        position: fixed;
+    }
+    nav button
+    {
+        margin-top: 13px;
+        margin-left: 2px;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+    }
+    #ur
+    {
+        margin-top: -25px;
+        margin-left: 2px;
+        position: absolute;
+        top: -7%;
+        left: 5%;
+        color: cyan;
+    }
+    #pr
+    {
+        margin-top: -8px;
+        margin-left: 0px;
+        position: absolute;
+        top: -8%;
+        left: 1%;
+        color: cyan;
+    }
+    #ur :hover
+    {
+        color: crimson;
+    }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <nav>
+        <div class="logo">
+            <a id="pr" class="navbar-brand" href="/profile">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-arrow-left"></i>
+                </button>
+            </a>
+            <a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
+        </div>
+        <ul>
+            <li><a href="/" >Home</a></li>
+            <li><a href="/complaints" class="active">Complaints</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/feedback">Feedback</a></li>
+        </ul>
+    </nav>
+    <img src="static\img\comp.jpg" alt="pic">
+    <section>
+        <div class="container"><br>
+            <form method="POST" action="/complaints" >
+                {% csrf_token %}
+                {% if messages %} 
+                    {% for message in messages %}
+                        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="blue"><h3> {{message}}</h3> </font></small>
+                    {% endfor %}
+                {% endif %}
+                <center><h1 class="text-center">Place &nbsp; your&nbsp; Complaints&nbsp; Here</h1></center>
+                <div class="form-group" data-error="UserName cant be empty" id="form">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="firstname" placeholder="FirstName" value="{{user}}" required/>
+                </div>
+                <div class="form-group" id="form">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="lastname" placeholder="LastName" value="{{user.last_name}}">
+                </div>
+                
+                <div class="form-group" id="form">
+                    <label for="email">Email:</label>&emsp;&emsp;
+                    <input type="email" id="email" name="email" placeholder="Emial" value="{{user.email}}" required/>
+                </div>
+
+                <div class="form-group" id="form">
+                    <label for="gender">Gender:</label>&emsp;&emsp;
+                    <input type="text" id="gender" name="gender" placeholder="gender" value="{{user.gender}}" required/>
+                </div>
+                
+                <div class="form-group" id="form">
+                    <label for="comptype" >Complaint Type:</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype1" required/>
+                    <label for="comptype">comptype1</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype2" >
+                    <label for="comptype">comptype2</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype3">
+                    <label for="comptype">comptype3</label><br>
+                </div>
+                <div class="form-group" id="form">
+                    <label  for="grampanchayat">GramPanchayat:</label><br>
+                    &nbsp;&emsp;&emsp;&emsp;
+                    &emsp;&emsp;&emsp;<select name="grampanchayat" multiple size="3" required min=1 max=6>
+                        <option value="aloor" >Aloor</option>
+                        <option value="harkur">harkur</option>
+                        <option value="Kundapura">Kundapura</option>
+                        <option value="jadkal">Jadkal</option>
+                        <option value="nada">nada</option>
+                        <option value="kota">kota</option>
+                    </select>
+                </div>
+                <div class="form-group" id="form">
+                    <label for="compliant">Your complint:</label><br>
+                    <textarea name="complaint" id="complaint" cols="50" rows="5" required></textarea>
+                </div><br>
+                <button class="btn" type="submit">SUBMIT</button>
+            </form>
+        </div>
+
+    </section>
+    
+    
+</body>
+</html>

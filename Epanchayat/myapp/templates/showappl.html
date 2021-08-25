@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user applied application</title>
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    #id_requirements
+    {
+      text-overflow:initial;
+     
+    }
+  </style>
+</head>
+<body>
+  
+
+{% extends "svs/base2.html" %}
+{% block content %}
+<div class="row">
+  
+  <div class="col-sm-8 offset-0">
+    <h4 class="text-center alert alert-info">Ration Card</h4>
+    {%  if stuu %}
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Service_Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Requirements</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for st in stuu %}
+            <tr>
+              <th scope="row">{{st.service_id}}</th>
+              <td>{{st.service_name}}</td>
+              <td>{{st.user_name}}</td>
+              <td>{{st.user_image}}</td>
+              <td>
+                
+               
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock content %}
+
+</body>
+</html>

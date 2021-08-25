@@ -1,0 +1,148 @@
+{% extends "svs/base2.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile Add SErvices</title>
+
+  
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-track
+    {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb
+    {
+      background-color: rgba(37, 32, 32, 0.219);
+      border-right: none;
+      border-left: none;
+    }
+    ::-webkit-scrollbar-track-piece:end
+    {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-track-piece:start
+    {
+      background: transparent;
+    }
+    #logo
+    {
+      position: fixed;
+      right: 3%;
+    }
+    a
+    {
+        text-decoration: none;
+    }
+    body
+    {
+      width: 100%;
+    }
+    /*nav
+    {
+      background-color: lightsalmon;
+      margin-bottom: 2%;
+      padding-top: 1%;
+      padding-bottom: 1%;
+      border-color: lime;
+      border-style: solid;
+    }*/
+    /*.btn
+    {
+      cursor: pointer;
+      border: 1px solid #3498db;
+      background-color: transparent;
+      height: 40px;
+      width: 150px;
+      color: #3498db;
+      font-size: 1.5em;
+      box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+      top: 60%;
+      position: fixed;
+      right: 0%;
+      top: 93%;
+    }*/
+
+  </style>
+
+  
+ <!---<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">&emsp;
+        <a class="navbar-brand" href="/">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+            <i class="fa fa-arrow-left"></i>
+          </button>
+        </a>&ensp;&nbsp;
+            <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+            <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+            <a class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+            <a class="nav-item nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>&ensp;&nbsp;
+            <a class="nav-item nav-link" href="/complaints"><i class="fa fa-flag" aria-hidden="true"></i>Complaint</a>&ensp;&nbsp;
+            <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>
+      </div>
+    </div>
+  </nav>-->
+</head>
+
+<body>
+<center>
+{% if messages %} 
+      {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+      {% endfor %}
+{% endif %}
+</center>
+<p><strong>{{user}}</strong>, now you are the panchayat user</p>
+<a href="{% url 'logout' %}" class="btn btn-danger">logout</a>
+<a href="{% url 'changepass' %}" class="btn btn-light">Change Password</a><br>
+
+  <div class="col-sm-10 offset-1">
+    <br><h4 class="text-center alert alert-info">Show Services</h4>
+    {%  if stu %}
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Service_Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Requirements</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for st in stu %}
+            <tr>
+              <th scope="row">{{st.service_id}}</th>
+              <td>{{st.service_name}}</td>
+              <td>{{st.description}}</td>
+              <td>{{st.requirements}}</td>
+              <td><a href="{% url 'applyservice' st.service_id %}" class="btn btn-warning btn-sm">Apply</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock content %}  
+</body>
+<a href="/feedback">
+<button class="btn">Feedback</button>
+</a>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Password Change</title>
+    <style>
+        body
+        {
+            font-family: sans-serif;
+            background: #e91e63;
+        }
+        .nav
+        {
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.3);
+            display: block;
+            padding-top: 1%; 
+            padding-bottom: 5px;    
+        }
+        a{text-decoration: none;}
+        #id1 {
+                margin-top: 10%;
+        }
+        #id2 { 
+                padding: 15px 32px;
+                color: salmon;
+                padding: 5%;
+             }
+        .er{color: red;}
+        .btn{
+             margin-left: 1%;            
+            }
+        .btn2{
+             margin-left: 63%;            
+            }
+        .btn:hover {
+            background-color: RoyalBlue;
+          }
+        .btn2:hover {
+            background-color: rgb(65, 225, 100);
+        }
+        .nav-link:hover
+        {
+            color: rgb(0, 140, 255);
+        }
+        
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<!---navbar-->
+  
+<nav class="nav">
+    <a href="/staffdetails">
+        <button class="btn"><i class="fa fa-arrow-left"></i></button>
+    </a>   &nbsp;
+    <a class="nav-link" href="/"><i class="fa fa-home">Home</a></i>&nbsp;&emsp;
+    <a class="nav-link" href="/contact"><i class="fa fa-comment">Contact us</a></i>&nbsp;&emsp;
+    <a class="nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i>About us</a>&nbsp;&emsp;
+    <a class="nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+    <a href="/staffdetails">
+        <button class="btn2"><i class="fa fa-user"></i></button>
+    </a>   
+    <!---<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+</nav>
+
+<body >
+  <div id="id1">
+        <center>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p class='er'><font color='red'>{{error}}</font></p>
+                    {% endfor %}
+                {% endif %}
+
+            {% for fm in form %}
+                {{fm.label_tag}} {{fm}} <br><font color='white'>{{fm.errors|striptags}} </font><br><br>
+            {% endfor %}
+
+            {% if messages %}
+            {% for message in messages %}
+                <p class="er">
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert" >
+                    <font color='black'><strong >{{ message }}</strong></font>
+                    <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                    </div>
+                </p>
+            {% endfor %} 
+            {% endif %}
+
+            <input type="submit" value="Save">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="reset"  value="Reset">
+            
+            <!---{{form.as_p}}-->
+        
+        </form>
+        <a href="/staffprofile"><button>Back</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'stafflogout' %}"><button>StaffLogout</button></a>
+    </center>
+</div>
+</body>
+</html>

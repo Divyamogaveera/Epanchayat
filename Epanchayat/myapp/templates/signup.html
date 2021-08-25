@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+
+      
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">&emsp;
+          <a class="navbar-brand" href="/userlogin">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+              <i class="fa fa-arrow-left"></i>
+            </button>
+          </a>&ensp;&nbsp;
+              <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
+              <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
+              <a class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+              <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>
+        </div>
+      </div>
+    </nav>
+</head>
+  <style>
+          #logo
+          {
+          position: fixed;
+          right: 3%;
+          }
+          a
+          {
+              text-decoration: none;
+          }
+          nav
+            {
+              background-color: rgba(185, 150, 150, 0.658);
+              margin-bottom: 2%;
+              padding-top: 1%;
+              padding-bottom: 1%;
+            }
+
+          .body
+              {
+                background-color:cornflowerblue;
+                overflow: auto;
+              }
+          .form-floating 
+          {
+            position:absolute;
+            top: 26px;
+            left: 25%;
+            width: 500%;
+            height: 60%;
+            max-width: 500px;
+            max-height: 880px;
+            padding: 10px;
+            margin: auto;
+            bottom: 30%;
+           }
+          .form-floating input[type="text"] {
+            width: 60%;
+            height: 20px;
+            left: 25px;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 2px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 15px;
+            margin-bottom: 0px;
+            border-bottom-right-radius: 500;
+            border-bottom-left-radius: 500;
+            border-color: rgb(143, 11, 44);
+            box-shadow: 0 0 8px 0 rgb(236, 10, 10);
+            transition: .3s;
+          }
+        .form-floating input[type="password"] {
+            width: 60%;
+            height: 20px;
+            left: 10%;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 2px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 0px;
+            border-top-left-radius: 500;
+            border-top-right-radius: 500;
+            border-color: rgb(143, 11, 55);
+            box-shadow: 0 0 8px 0 rgb(236, 10, 10);
+            transition: .3s;
+          }
+          .form-floating input[type="email"] {
+            width: 60%;
+            height: 20px;
+            left: 30px;
+            margin-left: 0vh;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 2px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 0%;
+            border-top-left-radius: 500;
+            border-top-right-radius: 500;
+            border-color: rgb(206, 17, 74);
+            box-shadow: 0 0 9px 0 rgb(209, 4, 14);
+            transition: .3s;
+          }
+          .form-floating input[type="number"] {
+            width: 60%;
+            height: 20px;
+            left: 30px;
+            margin-left: 0vh;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 2px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 0%;
+            border-top-left-radius: 500;
+            border-top-right-radius: 500;
+            border-color: rgb(206, 17, 74);
+            box-shadow: 0 0 9px 0 rgb(209, 4, 14);
+            transition: .3s;
+          }
+          .form-floating input[type="submit"]{
+            background-color: #342297;
+            border-radius: 30px;
+            color: greenyellow;
+            font-size: 16px;
+            width: 150px;
+            height: 40px;
+          } 
+          #id_gender
+          {
+            width: 60%;
+            height: 80%;
+            border-color: crimson;
+            border-radius: 2px;
+            border-spacing: 1%;
+            padding: 3px;
+            box-shadow: 0 0 9px 0 rgb(209, 4, 14);
+          }   
+        
+             
+  </style>
+<body class="body">
+  <div class="form-floating">
+    <center>
+        <form  action="" method="POST" novalidate>
+            {% csrf_token %}
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <p class="er">{{error}}</p>
+                {% endfor %}
+              {% endif %}
+
+              {% if messages %} 
+                {% for message in messages %}
+                   <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+                {% endfor %}
+              {% endif %}
+
+              <strong>
+                  <h2>
+                    <font color="navy">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;User Registration&nbsp;</font>
+                    <a class="reset" href=""><i id="re" class="fa fa-repeat"></i></a>&ensp;&nbsp;
+                    <br>
+                </h2>
+              </strong>
+              
+              {% for  fm in form  %}
+                <font face="verdana" color="yellow" size="3"> {{fm.label_tag}}&nbsp;</font>&nbsp;&nbsp; {{fm}}<font color="red"><br>{{fm.errors|striptags}} <br></font><br>
+              {% endfor %}   &emsp;&emsp;&emsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="submit">&nbsp;&nbsp;&nbsp;already registered? then <a href="{% url 'login' %}">LOGIN</a>
+         </form>
+        {% if messages %} 
+          {% for message in messages %}
+          <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+          {% endfor %}
+        {% endif %}
+    </center>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+ 

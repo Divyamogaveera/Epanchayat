@@ -1,7 +1,132 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img
+        {
+            border-radius: 50%;
+            width: 138px;
+            height: 110px;
+            border: 5px solid #555;
+            border-width: 5px;
+            border-color: seagreen;
+        }
+        .dropdown
+        {
+            margin: 0 auto;
+        }
+        nav
+        {
+            height: 50%;
+            background: black;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
 
-{% block title%} ABOUT {% endblock title %}
+        }
+        nav ul
+        {
+            padding: 0;
+            margin: 0;
+            float: right;
+            
 
-{% block  body %}
+        }
+        nav ul li
+        {
+            background: rgb(20, 20, 20);
+            position: relative;
+            list-style: none;
+            display: inline-block;
+        }
+        nav ul li a
+        {
+            display: block;
+            padding: 0 15px;
+            color: rgb(82, 26, 236);
+            text-decoration: none;
+            line-height: 37px;
+            font-size: 20px;
+        }
+        nav ul li a:hover
+        {
+            background-color: rgb(182, 182, 235);
+            border-radius:100px;
 
-{% endblock body%}
+        }
+        nav ul ul
+        {
+            position: absolute;
+            top: 60px;
+            display: none;
+        }
+        nav ul li:hover > ul
+        {
+            display: block;
+        }
+        nav ul ul li
+        {
+           
+            display: list-item;
+            position: relative;
+            float: none;
+            background-color: rgb(39, 112, 221);
+            width: 110%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: yellow;
+            border-radius: 95px;
+            margin-top: 4%;
+        }
+        nav ul ul ul li
+        {
+            position: relative;
+            top: -60px;
+            left: 150px;  
+        }
+        #id2
+        {
+            margin-top: -10%;
+        }
+        #id3
+        {
+            line-height: 35px;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="dropdown">
+        <nav>
+            <a id="id3" class="navbar-brand" href="/"><font size=5 color=white>Epanchayat Services</font></a>
+          <ul>
+            <li class="nav-item">
+                <a class="nav-link" href="https://gpdp.nic.in/">GPDP</a>
+              </li>
+            <li><a href="#">home</a></li>
+            <li><a href="#">Contact</a>
+                <ul>
+                  <li id="id2"><a class="dropdown-item" href="tel:+916360716008"><i  class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;<font color=white>(+91)6360716008</font></a></li>
+                  <li><a class="dropdown-item" href="https://wa.me/6360716008" target="blank"><i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<font color=white>6360716008</font></a></li>
+                  <li id="id1"><a class="dropdown-item" href="mailto:epanchayatservice@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;<font color=white>epanchayatservice@gmail</font></a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/aboutus" tabindex="-1" aria-disabled="false">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/signup" tabindex="-1" aria-disabled="false">Register</a>
+            </li>
+        </ul>
+        </nav>
+      </div>
+    <img src="static/img/logo1.png" alt="">
+    
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Feedback form demo - material design style</title>
+    <link rel="stylesheet" href="fcf-assets/css/fcf.materialize.min.css">
+    <script>
+        function validateForm()
+        {
+            let x=document.forms["myForm"]["Name"].value;
+            if(x=="")
+            {
+                alert("UserName must be filled out");
+                return false;
+            }
+            let y=document.forms["myForm"]["Email"].value;
+            if(y=="")
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            let z=document.forms["myForm"]["phone"].value;
+            if(z=="")
+            {
+                alert("Please Enter Mobile Number ");
+                return false;
+            }
+            let a=document.forms["myForm"]["GramPanchayat"].value;
+            if(a=="")
+            {
+                alert("Gram Panchayat must be filled out");
+                return false;
+            }
+            let b=document.forms["myForm"]["rate"].value;
+            if(b=="")
+            {
+                alert("Please slect your Feedback Range");
+                return false;
+            }
+
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;500&display=swap');  
+        form
+        {
+            padding: 5px;
+            margin-top: -1%;
+            width: 77%;
+
+        }
+        #fcf-button
+        {
+            border-color: darkcyan;
+            font-family: fantasy;
+            display: flex;
+            margin: auto;
+            font-size: 90%;
+        }
+        nav
+     {
+         margin: 0px;
+         padding-top: 0px;
+         box-sizing: border-box;
+         font-family: 'Big Shoulders Stencil Display', cursive;
+         width: 100%;
+         height: 8%;
+         background-color:  #505d61;
+         line-height: 70px;
+         /*padding: 0px 100px;*/
+         position: fixed;
+        /* z-index: 1;*/
+     }
+        nav .logo
+        {
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding-top: 0%;
+            
+        }
+        nav .logo
+        {
+            float: left;
+            color:#fff;
+            text-transform: uppercase;
+            
+            
+        }
+        nav ul
+        {
+            float:right ;
+            display:inline-flex;
+        }
+        nav ul li
+        {
+            display:inline-flex;
+            list-style: none;
+            margin-top: -7%;
+            padding-top: 0%;
+        }
+        nav ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 0px 32px;
+            padding-top: 0%
+        }
+        nav ul li a:hover
+        {
+            color: #c0d96f;
+        }
+        nav ul li .active
+        {
+            color: #c0d96f;
+        }
+        nav button
+        {
+            margin-top: 13px;
+            margin-left: 2px;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+        #ur
+        {
+            margin-top: -30px;
+            margin-left: 5px;
+            position: absolute;
+            top: 0%;
+            left: 4%;
+            color: cyan;
+        }
+        #pr
+        {
+            margin-top: -10px;
+            margin-left: -6px;
+            position: absolute;
+            top: 0%;
+            left: 1%;
+            color: cyan;
+        }
+        #ur :hover
+        {
+            color: crimson;
+        }
+        img
+        {
+            margin-top: 20%;
+            align-content: center;
+            width: 40%;
+            padding-right: -2%;
+            float: right;
+        }
+        h1
+        {
+            
+            font-family: cursive;
+            background-color:burlywood ;
+            text-align: center;
+            font-size: 30px;
+        }
+        textarea
+        {
+            width: 90%;
+            margin-bottom: 2%;
+            margin-top: 2%;
+            border-color: cyan;
+        }
+        input
+        {
+            margin-bottom: 2%;
+            border-color: cyan;
+        }
+        select
+        {
+            border-color: cyan;
+        }
+        .fa fa-arrow-left
+        {
+            margin-top: -30px;
+        }
+        #id1
+        {
+            font-size: 65%;
+        }
+        #id3
+        {
+            font-size: 65%;
+            padding-bottom: -2%;
+            margin-bottom: -5%;
+            margin-top: -2%;
+        }
+        #id2
+        {
+            font-size: 65%;
+            padding-top: -25%;
+            margin-top: 10%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <nav>
+        <div class="logo">
+            <a id="pr" class="navbar-brand" href="/profile" >
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-arrow-left"></i>
+                </button>
+            </a>
+            <a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
+        </div>
+        <ul>
+            <li><a href="/" >Home</a></li>
+            <li><a href="/feedback" class="active">FeedBack</a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/complaints">Complaints</a></li>
+        </ul>
+    </nav>
+<center><img src="static\img\fed.jpg" alt="fed"></center>
+<div style="max-width:500px;padding:30px;padding-top:0px">
+    <div id="fcf-form">
+        <form id="fm" name="myForm" class="col s12 fcf-form-class" method="POST" action="/feedback" onsubmit="return validateForm()">
+        {% csrf_token %}
+
+        {% if messages %} 
+            {% for message in messages %}
+                <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="hotpink"><h3> {{message}}</h3> </font></small>
+            {% endfor %}
+        {% endif %}
+
+            <h1><span style="font-style: normal; font-weight: 400;">Feedback &nbsp; Form</span></h1>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="name" id="Name" maxlength="60" data-validate-field="Name" value="{{user}}">
+                    <label id="id1" for="name">-User name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="email" id="Email" maxlength="100" data-validate-field="Email" value="{{user.email}}">
+                    <label id="id1"  for="Email">-Your email address</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="phone" id="phone" maxlength="100" data-validate-field="phone" value="{{user.phone}}">
+                    <label id="id1"  for="phone">-Your mob</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" name="grampanchayat" id="grampanchayat" maxlength="100" data-validate-field="grampanchayat" value="{{user.grampanchayat}}">
+                    <label id="id1"  for="grampanchayat">-Grampanchayat</label>
+                </div>
+            </div>
+            <br>
+            <!---<div class="row">
+                <div class="input-field col s12">
+                    <label  for="grampanchayat">:GramPanchayat</label><br>
+                        &nbsp;&emsp;&emsp;&emsp;
+                        &emsp;&emsp;&emsp;
+                        <select name="grampanchayat" multiple size="3" required min=1 max=6>
+                            <option value="aloor" >Aloor</option>
+                            <option value="harkur">harkur</option>
+                            <option value="Kundapura">Kundapura</option>
+                            <option value="jadkal">Jadkal</option>
+                            <option value="nada">nada</option>
+                            <option value="kota">kota</option>
+                        </select>
+                </div>
+            </div>-->
+            <div class="row" id="id3" >
+                <div class="input-field col s12">
+                    <legend class="legend-group">What type of feedback?</legend><br>
+                    <span>
+                        <label for="Feedback-Type-1" class="form-check-label">
+                            <input type="radio" class="with-gap" name="rate" id="Feedback-Type-1" value="General" data-validate-field="Feedback-Type">
+                            <span style="padding-right:16px"><font color="green">Best</font></span>
+                        </label>
+                    </span>
+
+                    <span>
+                        <label for="Feedback-Type-2" class="form-check-label">
+                            <input type="radio" class="with-gap" name="rate" id="Feedback-Type-2" value="Website Content" data-validate-field="Feedback-Type">
+                            <span style="padding-right:16px"><font color="lime">Good</font></span>
+                        </label>
+                    </span>
+                    <span>
+                        <label for="Feedback-Type-3" class="form-check-label">
+                            <input type="radio" class="with-gap" name="rate" id="Feedback-Type-3" value="Website Error" data-validate-field="Feedback-Type">
+                            <span style="padding-right:16px"><font color="maroon">Bad</font></span>
+                        </label>
+                    </span>
+                    <span>
+                        <label for="Feedback-Type-4" class="form-check-label">
+                            <input type="radio" class="with-gap" name="rate" id="Feedback-Type-4" value="Website Error" data-validate-field="Feedback-Type">
+                            <span style="padding-right:16px"><font color="red">Worst</font></span><br>
+                        </label>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <br><label id="id2"  for="Feedback-Comments">Please give your suggesions(optional):</label><br>
+                    <textarea name="adinfo" id="Feedback-Comments" class="materialize-textarea" maxlength="3000" rows="6" data-validate-field="Feedback-Comments"></textarea>
+                </div>
+            </div>
+            <div id="fcf-status" class="fcf-status"></div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button id="fcf-button" class="btn waves-effect waves-light btn-large col s12" type="submit" name="submit">Send Feedback</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="fcf-thank-you" style="display:none">
+        <!-- Thank you message goes below -->
+        <strong>Thank you</strong>
+        <p>Thank you for sending in your feedback.</p>
+        <br><br>
+        <button type="button" class="btn waves-effect waves-light btn-large" onclick="resetFormDemo()">Go back to the demo form</button>
+        <br><br>
+        <!-- Thank you message goes above -->
+    </div>
+</div>
+<script src="fcf-assets/js/fcf.materialize.min.js"></script>
+<script src="fcf-assets/js/fcf.just-validate.min.js"></script>
+<script src="fcf-assets/js/fcf.feedback.js"></script>
+</body>
+</html>
