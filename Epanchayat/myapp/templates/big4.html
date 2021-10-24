@@ -1,0 +1,10 @@
+
+{%  if stuu %}
+{% for st in stuu %}
+    <img src="{{st.user_image.url}}" alt="" class="card-img-top" height="330px" width="340">
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+

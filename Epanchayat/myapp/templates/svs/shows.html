@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add SErvices</title>
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    #id_requirements
+    {
+      text-overflow:initial;
+     
+    }
+  </style>
+</head>
+<body>
+  
+
+{% extends "svs/base2.html" %}
+{% block content %}
+<div class="row">
+  </div>
+  <div class="col-sm-12 offset-0">
+    <br><h4 class="text-center alert alert-info">Show Services</h4><br>
+    
+    {%  if stu %}
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Service_Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Requirements</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for st in stu %}
+            <tr>
+              <th scope="row">{{st.service_id}}</th>
+              <td>{{st.service_name}}</td>
+              <td>{{st.description}}</td>
+              <td>{{st.requirements}}</td>
+              <td>
+                <a href="{% url 'updateservice' st.service_id %}" class="btn btn-warning btn-sm">Edit</a>
+                <!--<form action="{% url 'deleteservice' st.service_id %}" method="POST" class="d-inline">
+                  {% csrf_token %}
+                  <input class="btn btn-danger" type="submit" value="Delete">
+                </form>-->
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+    {% endif %}
+    <br>
+    <div class="row">
+      <br>
+      <button class="btn btn-sm btn-outline-success"><a id="ab" href="{% url 'showappl' %}">Income Services Request</a></button><br>
+      
+      </div>
+      <br>
+      <div class="row">
+        <br>
+        <button class="btn btn-sm btn-outline-success"><a id="ab" href="{% url 'showappl2' %}">Panchayat Job Request</a></button><br>
+        </div>
+        <br>
+        <div class="row">
+          <br>
+          <button class="btn btn-sm btn-outline-success"><a id="ab" href="{% url 'showappl3' %}">Application of Gas Connection</a></button><br>
+          </div>
+          <br>
+          <div class="row">
+            <br>
+            <button class="btn btn-sm btn-outline-success"><a id="ab" href="{% url 'showappl4' %}">Other Services Request</a></button><br>
+            </div>
+            <br>
+      <div class="row">
+        
+
+  </div>
+</div>
+
+{% endblock content %}
+
+</body>
+</html>

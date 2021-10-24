@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user applied application</title>
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    #id_requirements
+    {
+      text-overflow:initial;
+     
+    }
+    #hr1
+    {
+      overflow: visible;
+      height: 10px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+ 
+    }
+    #a
+    {
+      text-decoration: none;
+    }
+   /* #hr1::after
+    {
+      display: block;
+      content: "";
+      height: 10px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+    }*/
+  </style>
+</head>
+<body>
+  
+
+{% extends "svs/base2.html" %}
+{% block content %}
+<div class="row">
+  
+ <div class="col-sm-12 offset-0">
+  <h4 class="text-center alert alert-danger">Other Application</h4>
+  {%  if stuuuuu %}
+    <table class="table table-hover">
+        
+          <tr>
+            <th scope="col">Key Num</th>
+            <th scope="col">Panchayat Service Name</th>
+            <th scope="col">Applicant Name</th>
+            <th scope="col">House no</th>
+            <th scope="col">Village</th>
+            <th scope="col">Pin</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Email</th>
+            <th scope="col">Panchayat</th>
+            <th scope="col">BPLCard</th>
+            <th scope="col">AdharCard</th>
+            <th scope="col">PassBook</th>
+            <th scope="col">UserImage</th>
+            <th scope="col">VoterID</th>
+            <th scope="col">Pan Card</th>
+            <th scope="col">Income Certificate</th>
+            <th scope="col">Cast Certificate</th>
+            <th scope="col">School Documents</th>
+            <th scope="col">Other Documents</th>
+            <th>Action</th>
+          </tr>
+        <tbody>
+          {% for st in stuuuuu %}
+          <tr>
+            <td>{{st.keyno}}</td>
+            <td>{{st.service_name}}</td>
+            <td>{{st.name}}</td>
+            <td>{{st.house_no}}</td>
+            <td>{{st.village}}</td>
+            <td>{{st.pin}}</td>
+            <td>{{st.mobile}}</td>
+            <td>{{st.email}}</td>
+            <td>{{st.panchayat}}</td>
+            <td>
+                {% if st.bpl_img %}
+                   
+                      <img src="{{st.bpl_img.url}}" alt="" class="card-img-top" height="130px" width="380"> 
+                   
+                {% else %}
+                  <font color=blue>required/not uploaded!</font>
+                {% endif %}
+              </td>
+              <td>
+                {% if st.adhar_img %}
+                   
+                            <img src="{{st.adhar_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                        
+                {% else %}
+                    <font color=blue>not required/not uploaded!</font>
+                {% endif %}
+              </td>
+              <td>
+                {% if st.bnk_img %}
+               
+                        <img src="{{st.bnk_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                    
+                {% else %}
+                   <font color=grey>not required/not uploaded!</font>
+                {% endif %}
+              </td>
+              <td>
+                {% if st.user_img %}
+                
+                     
+                          <img src="{{st.user_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                      
+                {% else %}
+                   <font color=light>not required/not uploaded!</font>
+                {% endif %}
+              </td>
+              <td>
+              {% if st.vote_img %}
+               
+                        <img src="{{st.vote_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                  
+              {% else %}
+                 <font color=grey>not required/not uploaded!</font>
+              {% endif %}
+              </td>
+
+              <td>
+                {% if st.pan_img %}
+                 
+                          <img src="{{st.pan_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                      
+                {% else %}
+                    <font color=orange>not required/not uploaded!</font>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if st.incm_img %}
+               
+                        <img src="{{st.incm_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                  
+                {% else %}
+                    <font color=green>is not required/not uploaded!</font>
+                {% endif %}
+              </td>
+
+              <td>
+
+                {% if st.cst_img %}
+                
+                        <img src="{{st.cst_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                   
+                </table>
+                {% else %}
+                    <font color=light black>is not required/not uploaded!</font>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if st.scldoc_img %}
+               
+                        <img src="{{st.scldoc.url}}" alt="" class="card-img-top" height="330px" width="340">
+                    
+                </table>
+                {% else %}
+                    <font color=Aquamarine>is not required/not uploaded!</font>
+                {% endif %}
+              </td>
+
+              <td>
+                {% if st.otdc_img %}
+                        <img src="{{st.otdc_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                   
+               
+                {% else %}
+                    <font color=grey>not required/not uploaded!</font>
+                {% endif %}
+              </td>
+              <td><a href="{% url 'approve_service4' st.curr_id %}" class="btn btn-warning btn-sm">Aprove/Decline</a></td>
+
+          </tr>
+
+          {% endfor %}
+        </tbody>
+        <td colspan="3"><button class="btn btn-sm  btn-info"><a id="a" href="{% url 'sz'  %}">Click here for all Documents</a></button></td>
+        
+    </table>
+  {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+  {% endif %}
+</div>
+
+</div>
+
+
+{% endblock content %}
+
+</body>
+</html>

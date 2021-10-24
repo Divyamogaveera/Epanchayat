@@ -1,0 +1,67 @@
+
+{%  if stuuu %}
+    {% for st in stuuu %}
+
+        <table>
+            <center><b><u>Applicant Image</u></b><br></center>
+            <tr>
+                <b>Panchayat :</b>{{st.panchayat}} <br>
+                <b>House No:</b>{{st.ration_no}} <br>
+            </tr>
+            <tr>
+            <img src="{{st.user_img.url}}" alt="" class="card-img-top" height="330px" width="440">&nbsp;&nbsp;
+            </tr>
+            
+            </tbody>
+        </table>
+        <hr>
+
+        <table>
+            <center><b><u>Ration Card(BPL)</u></b><br></center>
+            <tr>
+                <b>Panchayat :</b>{{st.panchayat}} <br>
+                <b>House No:</b>{{st.ration_no}} <br>
+            </tr>
+            <tr>
+                <img src="{{st.bpl_img.url}}" alt="" class="card-img-top" height="330px" width="440">&nbsp;&nbsp;&nbsp;&nbsp;
+            </tr>
+            
+            </tbody>
+        </table>
+        <hr>
+
+        <table>
+            <center><b><u>Adhar Card</u></b><br></center>
+            <tr>
+                <b>Panchayat :</b>{{st.panchayat}} <br>
+                <b>House No:</b>{{st.ration_no}} <br>
+            </tr>
+            <tr>
+                <img src="{{st.adhar_img.url}}" alt="" class="card-img-top" height="330px" width="440">&nbsp;&nbsp;&nbsp;&nbsp;
+            </tr>
+            
+            </tbody>
+        </table>
+        <hr>
+
+        <table>
+            <center><b><u>Bank Pass Book</u></b><br></center>
+            <tr>
+                <b>Panchayat :</b>{{st.panchayat}} <br>
+                <b>House No:</b>{{st.ration_no}} <br>
+            </tr>
+            <tr>
+                <img src="{{st.bnk_img.url}}" alt="" class="card-img-top" height="330px" width="440">&nbsp;&nbsp;
+            </tr>
+            
+            </tbody>
+        </table>
+        <hr>
+
+
+    {%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+

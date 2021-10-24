@@ -53,16 +53,12 @@
 <!---navbar-->
   
 <nav class="nav">
-    <a href="/staffprofile">
-        <button class="btn"><i class="fa fa-arrow-left"></i></button>
-    </a>   &nbsp;
+      &nbsp;
     <a class="nav-link" href="/"><i class="fa fa-home">Home</a></i>&nbsp;&emsp;
     <a class="nav-link" href="/contact"><i class="fa fa-comment">Contact us</a></i>&nbsp;&emsp;
     <a class="nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i>About us</a>&nbsp;&emsp;
-    <a class="nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-    <a href="/staffdetails">
-        <button class="btn2"><i class="fa fa-user"></i></button>
-    </a>   
+    <a class="nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>&emsp;
+    <a id="logo" class="nav-item nav-link" href="/staffdetails"><i class="fa fa-user"></i></a> 
     <!---<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
 </nav>
 

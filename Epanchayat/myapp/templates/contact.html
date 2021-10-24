@@ -25,15 +25,15 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" class="form-control" name="email"id="exampleFormControlInput1" placeholder="name@example.com" value="{{user.email}}">
+        <input  type="email" class="form-control" name="email"id="exampleFormControlInput1" placeholder="name@example.com" value="{{user.email}}">
       </div>
       <div class="mb-3">
         <label for="phone" class="form-label">Phone number</label>
-        <input type="phone" class="form-control" name="phone" id="phone" placeholder="Enter your phone number" value="{{user.phone}}">
+        <input required type="phone" class="form-control" name="phone" id="phone" placeholder="Enter your phone number" value="{{user.phone}}">
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">GramPanchayat</label>
-        <input type="text" class="form-control" name="grampanchayat"id="exampleFormControlInput1" placeholder="your grampanchayat" value="{{user.grampanchayat}}">
+        <input required type="text" class="form-control" name="grampanchayat"id="exampleFormControlInput1" placeholder="your grampanchayat" value="{{user.grampanchayat}}">
         <!---<textarea class="form-control" name=GramPanchayat id="GramPanchayat" rows="1" placeholder="your grampanchayat"></textarea>-->
       </div>
       <div class="mb-3">
@@ -43,11 +43,11 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">How can we help you..</label>
-        <textarea class="form-control" name=info id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea required class="form-control" name=info id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Aditional information</label>
-        <textarea class="form-control" name="adinfo" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea required class="form-control" name="adinfo" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <center>
       <button class="btn btn-primary" type="submit">Submit</button>

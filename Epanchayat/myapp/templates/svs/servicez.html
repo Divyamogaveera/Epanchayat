@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'myap/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Panchayat_job</title>
+    <style>
+        #id4
+        {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            display: inline-flex;
+            width: 100%;
+        }
+        #id4 li
+        {
+            float: left;
+            width: 170px;
+            height: 40px;
+            background-color: rgb(189, 92, 152);
+            opacity: .9;
+            line-height: 40px;
+            text-align: center;
+            font-size: 15px;
+            margin-right: 2px;    
+        }
+        #id4 li a
+        {
+            text-decoration: none;
+            color: white;
+            display: block;
+           
+        }
+        #id4 li a:hover
+        {
+            background-color: yellowgreen;
+            width: 90%;
+        }
+   
+        #abcd
+        {
+            background-color: yellowgreen;
+        }
+        #abcde{
+          width: 100%;
+          top: 0px;
+          bottom: 0px;
+          display: inline-flex;
+        }
+        .reset
+        {
+            font-size: 19px;
+        }
+        input[type='text']
+        {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            padding: 0%;
+        }
+        input[type='radio']
+        {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            padding: 0%;
+        }
+        input[type='email']
+        {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            padding: 0%;
+        }
+        input[type='select']
+        {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            padding: 0%;
+        }
+        .form-group mb-4
+        {
+            margin-bottom: 0%;
+            margin-top: 0%;
+            padding: 0%;
+        }
+
+    </style>
+    <div id="abcde">
+        <ul id="id4">
+            <li id="ll"><a href="/">Home</a></li>
+            <!--<li><a href="/" id="abcd"><b>Panchayat Service</b></a></li>-->
+            <li id="ll"><a href="/aboutus">about</a></li>
+            <li id="ll"><a href="/contact">contact</a>
+                <!--<ul>
+                    <li><a href="tel:+916360716008">(+91)6360716008</a></li>
+                    <li><a href="https://wa.me/6360716008">6360716008</a></li>
+                    <li><a href="mailto:epanchayatservice@gmail.com">epanchayatservice@gmail.com</a></li>
+                </ul>-->
+            </li>
+            <!--<li id="ll"><a href="https://gpdp.nic.in/">gpdp</a></li>-->
+            <li id="ll"><a href="/complaints">Complaint</a></li>
+            <li id="ll"><a href="/feedback">Feedback</a></li>
+
+        </ul>
+      </div>
+
+</head>
+<body>
+    <div class="container mb-5" >
+        <h1 class="alert-warning text-center p-3">Panchayat Service Application <a class="reset" href=""><i id="re" class="fa fa-repeat"></i></a></h1>
+        {% if messages %} 
+        {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color=green><center> {{message}} </center></font></small>
+        {% endfor %}
+      {% endif %}
+        <div class="row">
+            <div class="col-sm-8">
+                <form  method="POST" action="/applyservice/4/"  enctype="multipart/form-data" class="shadow p-5">
+                    {% csrf_token %}
+                    {% for fm in formz %}
+                    <div class="form-group mb-4">
+                        {{fm.label_tag}} <br>{{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="submit" class="btn btn-primary">
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <p class="alert alert-danger my-3">{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+           
+        </div>
+    </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" 
+    crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "svs/base2.html" %}
+{% block content %}
+  
+  <dov class="row">
+    {% if messages %} 
+    {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="black"><h5> {{message}}</h5> </font></small>
+    {% endfor %}
+{% endif %}
+    <div class="col-sm-8" offset-2>
+      <h4 class="alert alert-info">Staff Action on requested Application</h4>
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class="btn btn-sm btn-outline-primary" value="SUBMIT">
+        <a href="{% url 'shows' %}" class="btn btn-sm btn-outline-primary">BACK</a>
+      </form>
+    </div>
+  </dov>
+
+{% endblock content %}

@@ -127,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL='/media/'
+MEDIA_ROOT=BASE_DIR/ 'media'
 
 STATICFILES_DIR=[os.path.join(BASE_DIR,'static')]
 
@@ -143,7 +145,8 @@ AUTH_USER_MODEL='myapp.User'
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587 #outgoing email
-
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''
 EMAIL_USE_TLS=True
 
 

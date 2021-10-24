@@ -1,5 +1,6 @@
 {% extends "svs/base2.html" %}
 {% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,15 @@
 
   
   <style>
+    #ur
+    {
+        margin-top: -30px;
+        margin-left: 2px;
+        position: absolute;
+        top: 10%;
+        left: 1%;
+        color: cyan;
+    }
     ::-webkit-scrollbar
     {
       display: block;
@@ -46,6 +56,11 @@
     body
     {
       width: 100%;
+    }
+    #vip
+    {
+      margin-left: 250px;
+      margin-bottom: 0%;
     }
     /*nav
     {
@@ -105,9 +120,11 @@
       {% endfor %}
 {% endif %}
 </center>
-<p><strong>{{user}}</strong>, now you are the panchayat user</p>
+<p><strong>{{user}}</strong>, now you are a panchayat user</p>
 <a href="{% url 'logout' %}" class="btn btn-danger">logout</a>
 <a href="{% url 'changepass' %}" class="btn btn-light">Change Password</a><br>
+<a id="vip" href="{% url 'servicestatus' %}" class="btn btn-outline-info">View Application Status</a><br>
+<a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
 
   <div class="col-sm-10 offset-1">
     <br><h4 class="text-center alert alert-info">Show Services</h4>

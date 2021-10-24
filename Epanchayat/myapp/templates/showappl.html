@@ -17,6 +17,33 @@
       text-overflow:initial;
      
     }
+    #hr1
+    {
+      overflow: visible;
+      height: 10px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+ 
+    }
+    #a
+    {
+      text-decoration: none;
+    }
+   /* #hr1::after
+    {
+      display: block;
+      content: "";
+      height: 10px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+    }*/
   </style>
 </head>
 <body>
@@ -26,40 +53,48 @@
 {% block content %}
 <div class="row">
   
-  <div class="col-sm-8 offset-0">
-    <h4 class="text-center alert alert-info">Ration Card</h4>
+  <div class="col-sm-15 offset-0">
+    <h4 class="text-center alert alert-danger">Income Application</h4>
     {%  if stuu %}
       <table class="table table-hover">
-          <thead>
+          <!--<thead>-->
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Service_Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Requirements</th>
+              <!--<th scope="col">Service_Name</th>-->
+              <th scope="col">Applicant Name</th>
+              <th scope="col">User_image</th>
+              <th scope="col">House no</th>
+              <th scope="col">phone</th>
+              <th scope="col">Grampanchayat</th>
+              <th scope="col">Income_proof</th>
               <th>Action</th>
             </tr>
-          </thead>
           <tbody>
             {% for st in stuu %}
             <tr>
-              <th scope="row">{{st.service_id}}</th>
-              <td>{{st.service_name}}</td>
+              <!--<th scope="row">{{st.servicea_id}}</th>-->
+             <!---<td>{{st.service_name}}</td>-->
               <td>{{st.user_name}}</td>
-              <td>{{st.user_image}}</td>
-              <td>
-                
-               
-              </td>
+              <td><img src="{{st.user_image.url}}" alt="" class="card-img-top" height="130px" width="140"></td>
+              <!--<td><button class="btn btn-sm btn-info"><a href="{% url 'big' %}">Big Size</a></button></td>-->
+              <td>{{st.house_no}}</td>
+              <td>{{st.phone}}</td>
+              <td>{{st.grampanchayat}}</td>
+              <td><img src="{{st.incom_proof.url}}" alt="" class="card-img-top" height="130px" width="140"></td>
+              <td><a href="{% url 'approve_service1' st.income_id %}" class="btn btn-warning btn-sm">Aprove/Decline</a></td>
             </tr>
+            
             {% endfor %}
+            
           </tbody>
+          <td colspan="3"><button class="btn btn-sm  btn-info"><a id="a" href="{% url 'big' %}">Click here for all Documents</a></button></td><br>
+
       </table>
     {% else %}
-    <h4 class="text-center alert alert-warning">No Records</h4>
+    <h5 class="text-center alert alert-success">No Records</h5>
     {% endif %}
   </div>
-</div>
-
+  <hr id="hr1">
+  
 {% endblock content %}
 
 </body>

@@ -10,18 +10,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup"></div>
         <div class="navbar-nav">&emsp;
-          <a class="navbar-brand" href="/userlogin">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-             <span class="navbar-toggler-icon"></span>
-              <i class="fa fa-arrow-left"></i>
-            </button>
+          <a class="navbar-brand" href="/userlogin"></a>
+          
           </a>&ensp;&nbsp;
               <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
-              <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
-              <a class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
-              <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>
+              <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment">Contact us</i></a>&ensp;&nbsp;
+              <a class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" > About us</i></a>&ensp;&nbsp;
+              <!--<a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>-->
         </div>
       </div>
     </nav>
@@ -35,6 +32,12 @@
           a
           {
               text-decoration: none;
+          }
+          form
+          {
+            position: left;
+            align-content: left;
+            margin-top: -10%;
           }
           nav
             {
@@ -51,14 +54,14 @@
               }
           .form-floating 
           {
-            position:absolute;
-            top: 26px;
+            
+            top: -10px;
             left: 25%;
-            width: 500%;
-            height: 60%;
-            max-width: 500px;
-            max-height: 880px;
-            padding: 10px;
+            width: 90%;
+            height: 50%;
+
+            padding: 5px;
+            padding-top: -20%;
             margin: auto;
             bottom: 30%;
            }
@@ -143,12 +146,12 @@
             padding: 3px;
             box-shadow: 0 0 9px 0 rgb(209, 4, 14);
           }   
-        
+         
              
   </style>
 <body class="body">
   <div class="form-floating">
-    <center>
+   
         <form  action="" method="POST" novalidate>
             {% csrf_token %}
               {% if form.non_field_errors %}
@@ -156,16 +159,16 @@
                   <p class="er">{{error}}</p>
                 {% endfor %}
               {% endif %}
-
-              {% if messages %} 
+              <br><br>&nbsp;&nbsp;&emsp13;
+              <center>{% if messages %} 
                 {% for message in messages %}
-                   <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
+                   <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font size=4 color=white> {{message}} </font></small>
                 {% endfor %}
               {% endif %}
-
+            </center>
               <strong>
                   <h2>
-                    <font color="navy">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;User Registration&nbsp;</font>
+                    <font color="navy">&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;User Registration&nbsp;</font>
                     <a class="reset" href=""><i id="re" class="fa fa-repeat"></i></a>&ensp;&nbsp;
                     <br>
                 </h2>
@@ -181,7 +184,7 @@
           <small {% if message.tags %} class="{{message.tags}}" {% endif %}> {{message}} </small>
           {% endfor %}
         {% endif %}
-    </center>
+    
   </div>
 </body>
 </html>

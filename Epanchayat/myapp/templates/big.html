@@ -1,0 +1,66 @@
+
+{%  if stuu %}
+    {% for st in stuu %}
+    <table>
+        <center><b><u>Applicant Image</u></b><br></center>
+        <tr>
+            <b>Panchayat :</b>{{st.grampanchayat}} <br>
+            <b>House No:</b>{{st.house_no}} <br>
+            <b>Ward No:</b>{{st.wardno}} <br>
+        </tr>
+        <tr>
+              <td><img src="{{st.user_image.url}}" alt="" class="card-img-top" height="300px" width="500"></td>
+        </tr>
+           
+        </tbody>
+    </table>
+    <hr>
+    <table>
+        <center><b><u>Adhar Crad</u></b><br></center>
+        <tr>
+            <b>Panchayat :</b>{{st.grampanchayat}} <br>
+            <b>House No:</b>{{st.house_no}} <br>
+            <b>Ward No:</b>{{st.wardno}} <br>
+        </tr>
+        <tr>
+            <img src="{{st.adhar_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+        </tr>
+           
+        </tbody>
+    </table>
+        <hr>
+    <table>
+        <center><b><u>Income Certificate</u></b><br></center>
+        <tr>
+            <b>Panchayat :</b>{{st.grampanchayat}} <br>
+            <b>House No:</b>{{st.house_no}} <br>
+            <b>Ward No:</b>{{st.wardno}} <br>
+        </tr>
+        <tr>
+            <img src="{{st.incom_proof.url}}" alt="" class="card-img-top" height="330px" width="340">
+        </tr>
+           
+        </tbody>
+    </table>
+    <hr>
+    <table>
+        <center><b><u>Voter ID</u></b><br></center>
+        <tr>
+            <b>Panchayat :</b>{{st.grampanchayat}} <br>
+            <b>House No:</b>{{st.house_no}} <br>
+            <b>Ward No:</b>{{st.wardno}} <br>
+        </tr>
+        <tr>
+            <img src="{{st.vote.url}}" alt="" class="card-img-top" height="330px" width="340">
+        </tr>
+           
+        </tbody>
+    </table>  
+    <hr>                 
+
+    {%  endfor %}
+{% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+  
+

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
 from django.db.models.base import Model
-from .models import Complaints, Contact, Feedback ,service,service_A,Service_B
+from .models import Complaints, Contact, Feedback ,service,service_A,Service_B,service_C,service_Z,approve1,approve2,approve3,approve4
 from myapp.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
@@ -50,17 +50,50 @@ admin.site.register(Contact)
 admin.site.register(Feedback)
 admin.site.register(Complaints)
 #admin.site.register(UserProfile)
-admin.site.register(service)
+#admin.site.register(service)
 #admin.site.register(service_A)
+
+
+@admin.register(approve1)
+class approve(admin.ModelAdmin):
+    list_display=['app_id','income_no','decision']
+
+@admin.register(approve2)
+class approve(admin.ModelAdmin):
+    list_display=['app_id','job_no','decision']
+
+@admin.register(approve3)
+class approve(admin.ModelAdmin):
+    list_display=['app_id','gas_no','decision']
+
+@admin.register(approve4)
+class approve(admin.ModelAdmin):
+    list_display=['app_id','curr_no','decision']
+
+
+@admin.register(service)
+class service(admin.ModelAdmin):
+    list_display=['service_name']
 
 @admin.register(service_A)
 class ServiceA(admin.ModelAdmin):
-    list_display=['user','service_id','user_image','grampanchayat','apply_date']
+    list_display=['house_no','servicea_id','user_image','grampanchayat','apply_date']
 
 @admin.register(Service_B)
 class ServiceB(admin.ModelAdmin):
-    list_display=['id','name','dob','gender','village',
+    list_display=['job_id','name','dob','gender','village',
     'panchayat','pin','job_panchayat','profile_img',]
+
+@admin.register(service_C)
+class ServiceC(admin.ModelAdmin):
+    list_display=['gas_id','servicec_id','user','ration_no',
+    'panchayat','bpl_img',]
+
+@admin.register(service_Z)
+class ServiceZ(admin.ModelAdmin):
+    list_display=['curr_id','keyno','service_name','panchayat',]
+
+
 
 
 

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>approval of income</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  *,*::before,*::after
+  {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body
+  {
+    font-family: mukta,sans-serif;
+    height: 40vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    font-size: 1.1rem;
+    background-color: rgb(56, 136, 182);
+
+  }
+  table
+  {
+    border-collapse: collapse;
+    box-shadow: 0 5px 10px gray;
+    background-color: rgb(255, 250, 240);
+    text-align: center;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  thead
+  {
+    box-shadow:0 5px 10px gray ;
+  }
+  th
+  {
+    padding: .5rem 2rem ;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 0.7rem;
+    font-weight: 900;
+  }
+  td
+  {
+    padding: 2rem,3rem;
+  }
+  .status{
+    border-radius: 5%;
+    background-color:lightskyblue;
+    padding: 0.2rem, 1rem;
+    text-align: center;
+    
+  }
+  tr:nth-child(even)
+  {
+    background-color: mediumblue;
+  }
+  .box
+  {
+    width: 600px;
+    height: 35px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .box > i 
+  {
+    font-size: 20px;
+    color: #777;
+  }
+  .box > input
+  {
+    flex: 1;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding-left: 10px;
+  }
+</style>
+<body>
+  <div class="box">
+    <i class="fa fa-search" aria-hidden="true"></i>
+  <input type="text" name="" id="myInput" placeholder="search by Email..." onkeyup="searchFun()">
+  </div>
+<script>
+  const searchFun= () =>{
+    let filter = document.getElementById('myInput').value.toUpperCase();
+
+    let myTable= document.getElementById('myTable');
+
+    let tr = myTable.getElementsByTagName('tr');
+
+    for(var i=0; i<tr.length; i++)
+    {
+      let td = tr[i].getElementsByTagName('td')[0];
+
+      if (td)
+      {
+        let textvalue= td.textContent || td.innerHTML;
+        
+        if(textvalue.toUpperCase().indexOf(filter)>-1)
+        {
+          tr[i].style.display="";
+        }
+        else
+        {
+          tr[i].style.display= "none";
+        }
+
+      }
+
+    }
+  }
+</script>
+    {%  if aprr %}
+      <table class="table table-hover" id="myTable">
+          <thead>
+            <hr>
+            <tr>
+              <th scope="col">Email</th>
+              <th scope="col">Name</th>
+              <th scope="col">Decision</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for st in aprr %}
+            <tr>
+              <td scope="row">{{st.email}}</td>
+              <td scope="row">{{st.name}}</td>
+              <td><p class="status">{{st.decision}}</p></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+    {% endif %}
+</body>
+</html>

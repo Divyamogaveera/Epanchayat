@@ -1,0 +1,384 @@
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.bpl_img %}
+        <table>
+            <tbody>
+            <tr>
+            <th>BPL Card:</th>
+            </tr>
+            <hr>
+           
+                    <tr>
+                        <b>Service Name:</b>{{st.service_name}}<br>
+                        <b>Applicant Name:</b>{{st.name}}<br>
+                      <b>House No:</b>{{st.house_no}}</td>
+                    </tr>
+                    <tr>
+                    <td>
+                        <img src="{{st.bpl_img.url}}" alt="" class="card-img-top" height="330px" width="480">
+                    </td>
+                    
+                    </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td>
+    </tr>
+        <h5 ><font color=grey>Bpl card is not required/not uploaded!</h5>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.adhar_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Adhar Card:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.adhar_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+       
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td>
+    </tr>
+        <td><h5 ><font color=grey>Adhar card not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.bnk_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Bank Details:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.bnk_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td>
+    </tr>
+        <td><h5 ><font color=grey>Bank Pass Book not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.user_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>User Image:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.user_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>User Image not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.vote_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Voter ID:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.vote_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+ 
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>Voter Id not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.pan_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Pan card:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.pan_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+ 
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>Pan card not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.incm_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Income Certificate:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.incm_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>Income certificate is not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.cst_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Cast Certificate:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.cst_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>Cast certificate is not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.scldoc_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>School Documents:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.scldoc.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+    {% else %}
+    <hr>
+    <tr>
+        <td> <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>School certificate is not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+{%  if stuu %}
+{% for st in stuu %}
+    {% if st.otdc_img %}
+    <table>
+        <tbody>
+        <tr>
+            <th>Other Documents:</th>
+        </tr>
+        <hr>
+       
+                <tr>
+                    <b>Service Name:</b>{{st.service_name}}<br>
+                    <b>Applicant Name:</b>{{st.name}}<br>
+                  <b>House No:</b>{{st.house_no}}</td>
+                </tr>
+                <tr>
+                <td>
+                    <img src="{{st.otdc_img.url}}" alt="" class="card-img-top" height="330px" width="340">
+                </td>
+                
+                </tr>
+        </tbody>
+    </table>
+     
+    {% else %}
+    <hr>
+    <tr>
+        <td> 
+            <b>Service Name:</b>{{st.service_name}}&nbsp;<br>
+            <b>Applicant Name:</b>{{st.name}}&nbsp;<br>
+            <b>House No:</b>{{st.house_no}}</td><br>
+    </tr>
+        <td><h5 ><font color=grey>Other Documents not required/not uploaded!</font></h5></td>
+    {% endif %}
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+

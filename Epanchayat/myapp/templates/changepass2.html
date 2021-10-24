@@ -100,9 +100,9 @@
             </a>&ensp;&nbsp;
                 <a class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
                 <a class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
-                <a class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+                <a class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
                 <a class="nav-item nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>&ensp;&nbsp;
-                <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>
+               <!-- <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>-->
           </div>
         </div>
       </nav>
@@ -116,7 +116,7 @@
             <p class="er">
                 <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0" role="alert" >
                 <font color='cerulean'><strong >{{ message }}</strong></font>
-                <!--<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </p>
         {% endfor %} 

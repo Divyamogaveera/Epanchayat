@@ -9,6 +9,7 @@
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" 
     crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'myap/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Panchayat_job</title>
     <style>
         #id4
@@ -54,6 +55,10 @@
           bottom: 0px;
           display: inline-flex;
         }
+        .reset
+        {
+            font-size: 19px;
+        }
     </style>
     <div id="abcde">
         <ul id="id4">
@@ -77,7 +82,14 @@
 </head>
 <body>
     <div class="container mb-5" >
-        <h1 class="alert-success text-center p-3">Job Application</h1>
+        <h1 class="alert-success text-center p-3">Job Application <a class="reset" href=""><i id="re" class="fa fa-repeat"></i></a></h1>
+        <center>
+        {% if messages %} 
+        {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}> <font size=6 color=green> {{message}} </font></small>
+        {% endfor %}
+      {% endif %}
+      </center>
         <div class="row">
             <div class="col-sm-8">
                 <form  method="POST" action="/applyservice/2/"  enctype="multipart/form-data" class="shadow p-5">
@@ -95,9 +107,7 @@
                     {% endif %}
                 </form>
             </div>
-            <div class="col-sm-4">
-                <h4 class="text-center mb-3"><u>List of application</u></h4>
-            </div>
+           
         </div>
     </div>
     </form>

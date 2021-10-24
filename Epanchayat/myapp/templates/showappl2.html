@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user applied application</title>
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    #id_requirements
+    {
+      text-overflow:initial;
+     
+    }
+    #hr1
+    {
+      overflow: visible;
+      height: 10px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+ 
+    }
+    #a
+    {
+      text-decoration: none;
+    }
+   /* #hr1::after
+    {
+      display: block;
+      content: "";
+      height: 10px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+    }*/
+  </style>
+</head>
+<body>
+  
+
+{% extends "svs/base2.html" %}
+{% block content %}
+<div class="row">
+  
+ 
+  <div class="col-sm-12 offset-0">
+    <h4 class="text-center alert alert-danger">Panchayat Job Application</h4>
+    {%  if stuuu %}
+      <table class="table table-hover">
+          
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Panchayat</th>
+              <th scope="col">Job in panchayat</th>
+              <th scope="col">Profile</th>
+              <th scope="col">HSC/SSC</th>
+              <th scope="col">Document</th>
+              <th scope="col">Action</th>
+            </tr>
+          
+          <tbody>
+            {% for st in stuuu %}
+            <tr>
+              <td>{{st.name}}</td>
+              <td>{{st.panchayat}}</td>
+              <td>{{st.job_panchayat}}</td>
+              <td><img src="{{st.profile_img.url}}" alt="" class="card-img-top" height="130px" width="150px"></td>
+              <td><img src="{{st.hscssc.url}}" alt="" class="card-img-top" height="130px" width="150px"></td>
+              <td><img src="{{st.document.url}}" alt="" class="card-img-top" height="130px" width="150"></td>
+              <td><a href="{% url 'approve_service2' st.job_id %}" class="btn btn-warning btn-sm">Aprove/Decline</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <td colspan="3"><button class="btn btn-sm  btn-info"><a id="a" href="{% url 'big2'  %}">Click here for all Documents</a></button></td><br>
+
+      </table>
+    {% else %}
+    <h4 class="text-center alert alert-warning">No Records</h4>
+    {% endif %}
+  </div>
+
+</div>
+<hr id="hr1">
+
+
+{% endblock content %}
+
+</body>
+</html>

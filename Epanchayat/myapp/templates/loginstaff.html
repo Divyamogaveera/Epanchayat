@@ -27,7 +27,10 @@
             padding-bottom: 30px;
             background-color: #378a8de1;
           }
-        .er{color: red;}
+        .er{
+              color: red;
+              font-size: 10px;
+           }
         .form-floating {
           position:fixed;
           top: 10px;
@@ -99,7 +102,7 @@
       </a>
     </div>
   </nav>
-  <p class="kar"><img src="static\img\kar.jpg" alt="d" width="1368" height="658"></p>
+  <p class="kar"><img src="static\img\kar.jpg" alt="d" width="1369" height="659"></p>
  </body>
 <main class="form-signin">
 <body>
@@ -107,14 +110,14 @@
   <center>
     {% if messages %} 
       {% for message in messages %}
-        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><h3><font color='red'>{{message}}</font> </h3> </small>
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><h3></h3><font color='red'>{{message}}</font> </h3> </small>
       {% endfor %}
     {% endif %}
     <form action="" method="POST" novalidate>
         {% csrf_token %}
-        <img class="mb-3" src="static/img/logo1.png" alt="logo" width="84" height="66">
+        <img class="mb-1" src="static/img/logo1.png" alt="logo" width="84" height="58">
         
-        <h2 class="h3 mb-2 fw-normal">Log in to Epanchayat <a class="reset" href=""><font size=3><i id="re" class="fa fa-repeat"></i></font></a> </h2>
+        <h3 class="h3 mb-1 fw-normal">Log in to Epanchayat <a class="reset" href=""><font size=3><i id="re" class="fa fa-repeat"></i></font></a> </h3>
 
         {% if form.non_field_errors %}
           {% for error in form.non_field_errors %}

@@ -35,7 +35,7 @@
         padding-top: 20%;
         margin-left: 3%;
         margin-right: 5%;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+       
     }
     section
     {
@@ -58,7 +58,7 @@
         background-color: white;
         border-radius: 3px;
         margin-bottom: 15px;
-        margin-top: -12%;
+        margin-top: -8%;
         margin-left: 50%;
         position:static;
         
@@ -151,7 +151,7 @@
          width: 100%;
          height: 8%;
          background-color:  #505d61;
-         line-height: 60px;
+         line-height: 40px;
          /*padding: 0px 100px;*/
          position: fixed;
         /* z-index: 1;*/
@@ -161,7 +161,7 @@
          font-size: 50px;
          font-weight: bold;
          letter-spacing: 1.5px;
-         padding-top: 0%;
+         padding-top: 4%;
      }
      nav .logo
      {
@@ -178,15 +178,15 @@
     {
         display:inline-flex;
         list-style: none;
-        margin-top: -6%;
+        margin-top: -4%;
         padding-top: 0%;
     }
     nav ul li a{
         color: #fff;
         text-decoration: none;
-        font-size: 10px;
+        font-size: 15px;
         text-transform: uppercase;
-        padding: 0px 32px;
+        padding: 10px 35px;
         padding-top: 0%
     }
     nav ul li a:hover
@@ -218,7 +218,7 @@
     }
     #ur
     {
-        margin-top: -25px;
+        margin-top: -18px;
         margin-left: 2px;
         position: absolute;
         top: -7%;
@@ -245,10 +245,7 @@
     <nav>
         <div class="logo">
             <a id="pr" class="navbar-brand" href="/profile">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-                  <i class="fa fa-arrow-left"></i>
-                </button>
+                
             </a>
             <a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
         </div>
@@ -292,12 +289,12 @@
                 
                 <div class="form-group" id="form">
                     <label for="comptype" >Complaint Type:</label><br>
-                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype1" required/>
-                    <label for="comptype">comptype1</label><br>
-                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype2" >
-                    <label for="comptype">comptype2</label><br>
-                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="comptype3">
-                    <label for="comptype">comptype3</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="Unavailable Service" required/>
+                    <label for="comptype">Unavailable Service</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="Massive errors" >
+                    <label for="comptype">Massive errors</label><br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;<input type="radio" id="comptype" name="comptype" value="Others">
+                    <label for="comptype">Others</label><br>
                 </div>
                 <div class="form-group" id="form">
                     <label  for="grampanchayat">GramPanchayat:</label><br>

@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Password Change</title>
     <style>
+        #bt
+        {
+            background-color: rgb(59, 35, 167);
+            border-radius: 6px;
+            margin-bottom: 2px;
+            width: 11%;
+
+        }
+        input[type=password]
+        {
+            border-radius: 5px;
+        }
+        input[type=submit],input[type=reset]
+        {
+            background-color: aqua;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            width: 10%;
+        }
+        #lo
+        {
+            margin-left: 40%;
+        }
         body
         {
             font-family: sans-serif;
@@ -60,9 +83,9 @@
     <a class="nav-link" href="/contact"><i class="fa fa-comment">Contact us</a></i>&nbsp;&emsp;
     <a class="nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i>About us</a>&nbsp;&emsp;
     <a class="nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
-    <a href="/staffdetails">
-        <button class="btn2"><i class="fa fa-user"></i></button>
-    </a>   
+    <a id="lo" class="nav-item nav-link" href="/staffdetails"><i class="fa fa-user"></i></a>  
+  
+     
     <!---<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
 </nav>
 
@@ -98,8 +121,8 @@
             <!---{{form.as_p}}-->
         
         </form>
-        <a href="/staffprofile"><button>Back</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="{% url 'stafflogout' %}"><button>StaffLogout</button></a>
+        <a  href="/addandshow"><button id="bt">Back</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a  href="{% url 'stafflogout' %}"><button id="bt"> StaffLogout</button></a>
     </center>
 </div>
 </body>

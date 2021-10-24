@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from myapp import views
+from django.conf.urls.static import static
+from django.conf import settings
 import myapp
 
 admin.site.site_header = "Panchayat services Admin"
@@ -44,6 +46,7 @@ urlpatterns = [
     path('susers/<int:id>',views.susers,name='susers'),
     path('staffchangepass2/',views.staff_change_pass2,name='staffchangepass2'), 
     path('changepass2/',views.user_change_pass2,name='changepass2'),
+    
 
     
-]
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -2,13 +2,18 @@
 {% block content %}
   
   <dov class="row">
+    {% if messages %} 
+    {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="hotpink"><h3> {{message}}</h3> </font></small>
+    {% endfor %}
+{% endif %}
     <div class="col-sm-8" offset-2>
       <h4 class="alert alert-info">Update Services {{service_id}} information</h4>
       <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" class="btn btn-success" value="Update">
-        <a href="{% url 'addandshow' %}" class="btn btn-info">back</a>
+        <a href="{% url 'shows' %}" class="btn btn-info">back</a>
       </form>
     </div>
   </dov>

@@ -1,0 +1,50 @@
+
+{%  if stuuu %}
+{% for st in stuuu %}
+<table>
+    <center><b><u>Applicant Image</u></b><br></center>
+    <tr>
+        <b>Email :</b>{{st.email}} <br>
+        <b>Panchayat:</b>{{st.panchayat}} <br>
+    </tr>
+    <tr>
+        <img src="{{st.profile_img.url}}" alt="" class="card-img-top" height="330px" width="340">&nbsp;&nbsp;&nbsp;&nbsp;
+    </tr>
+       
+    </tbody>
+</table>
+<hr>
+
+<table>
+    <center><b><u>HSC/SSC</u></b><br></center>
+    <tr>
+        <b>Email :</b>{{st.email}} <br>
+        <b>Panchayat:</b>{{st.panchayat}} <br>
+    </tr>
+    <tr>
+        <img src="{{st.hscssc.url}}" alt="" class="card-img-top" height="330px" width="340">&nbsp;&nbsp;&nbsp;&nbsp;
+    </tr>
+       
+    </tbody>
+</table>
+<hr>
+
+<table>
+    <center><b><u>Documents</u></b><br></center>
+    <tr>
+        <b>Email :</b>{{st.email}} <br>
+        <b>Panchayat:</b>{{st.panchayat}} <br>
+    </tr>
+    <tr>
+        <img src="{{st.document.url}}" alt="" class="card-img-top" height="330px" width="340">&nbsp;&nbsp;
+    </tr>
+       
+    </tbody>
+</table>
+<hr>
+{%  endfor %}
+{% else %}
+<h4 class="text-center alert alert-warning">No Records</h4>
+{% endif %}
+
+

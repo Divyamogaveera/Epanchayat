@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user applied application</title>
+  <style>
+    ::-webkit-scrollbar
+    {
+      display: block;
+      width: 5px;
+      background: transparent;
+    }
+    #id_requirements
+    {
+      text-overflow:initial;
+     
+    }
+    #hr1
+    {
+      overflow: visible;
+      height: 10px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 1px 0 0 0;
+      border-radius: 20px;
+ 
+    }
+    #a
+    {
+      text-decoration: none;
+    }
+   /* #hr1::after
+    {
+      display: block;
+      content: "";
+      height: 10px;
+      margin-top: -31px;
+      border-style: solid;
+      border-color: black;
+      background-color: black;
+      border-width: 0 0 1px 0;
+      border-radius: 20px;
+    }*/
+  </style>
+</head>
+<body>
+  
+
+{% extends "svs/base2.html" %}
+{% block content %}
+<div class="row">
+  
+  
+<hr id="hr1">
+<!--third services service c-->
+
+<div class="col-sm-12 offset-0">
+  <h4 class="text-center alert alert-danger">Gas For House</h4>
+  {%  if stuuuu %}
+    <table class="table table-hover">
+        
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col">Ration no</th>
+            <th scope="col">panchayat</th>
+            <th scope="col">Pin Code</th>
+            <th scope="col">BPL card</th>
+            <th scope="col">Adhar card</th>
+            <th scope="col">Bank card</th>
+            <th>Action</th>
+          </tr>
+        
+        <tbody>
+          {% for st in stuuuu %}
+          <tr>
+            <th scope="row">{{st.name}}</th>
+            <td>{{st.ration_no}}</td>
+            <td>{{st.panchayat}}</td>
+            <td>{{st.pin}}</td>
+            <td><img src="{{st.bpl_img.url}}" alt="" class="card-img-top" height="130px" width="150px"></td>
+            <td><img src="{{st.adhar_img.url}}" alt="" class="card-img-top" height="130px" width="150px"></td>
+            <td><img src="{{st.bnk_img.url}}" alt="" class="card-img-top" height="130px" width="150"></td>
+            <td><a href="{% url 'approve_service3' st.gas_id %}" class="btn btn-warning btn-sm">Aprove/Decline</a></td>
+
+ 
+          </tr>
+          {% endfor %}
+        </tbody>
+        <td colspan="3"><button class="btn btn-sm  btn-info"><a id="a" href="{% url 'big3'  %}">Click here for all Documents</a></button></td><br>
+
+    </table>
+  {% else %}
+  <h4 class="text-center alert alert-info">No Records</h4>
+  {% endif %}
+</div>
+
+</div>
+<hr id="hr1">
+
+{% endblock content %}
+
+</body>
+</html>

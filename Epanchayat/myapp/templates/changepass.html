@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Password Change</title>
     <style>
+        #hh
+        {
+            border-radius: 10%;
+            background-color: rgb(55, 146, 111);
+            border: none;
+            color: white;
+        }
+        a
+        {
+            text-decoration: none;
+        }
         #id1
          {
             background-color: turquoise;
@@ -18,14 +29,14 @@
             width: 100%;
             border: 1px solid rgb(0, 255, 255);
             background: rgb(167, 29, 57);
-            margin-bottom: 6px;
+            margin-bottom: -10px;
         }
 
         hr.two {
             width: 100%;
             border: 1px solid rgb(0, 255, 255);
             background: rgb(167, 29, 57);
-            margin-top: 0px;
+            margin-top: -14px;
         }
         #bt
         {
@@ -35,27 +46,37 @@
         {
             margin-top: 3px;
         }
+        input[type=submit],input[type=reset]
+        {
+            background-color: rgb(37, 192, 127);
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 10%;
+        }
+        input[type=password]
+        {
+            border-radius: 5%;
+        }
     </style>
     <!--back-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body id="id1">
   <hr class="one">
     <div class="container">
         <p>
-            <a href="/profile" class="btn btn-default btn-sm">
-                <span id="a1" class="glyphicon glyphicon-arrow-left"></span> Back
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           
             <a href="/" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-home"></span> Home
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a  href="/userdetails">
-                <button id="bt" type="button" class="btn btn-secondary pull-right">
-                  <span class="glyphicon glyphicon-user"></span>
+                <span class="glyphicon glyphicon-home"></span><font size="4"><i class="fa fa-home"></i>
+            </a>&nbsp;&nbsp;&nbsp;
+            <a  href="/userdetails" id="bt">
+                <font size="4"><i class="fa fa-user"></i>
                 </button>
             </a>
         </p> 
@@ -94,7 +115,7 @@
     </form>
     <!---<a href="/profile"><button>Back</button></a>&nbsp;&nbsp;&nbsp;&nbsp;-->
     <br>
-    <a href="{% url 'logout' %}"><button>logout</button></a>
+    <a href="{% url 'logout' %}"><button id="hh">logout</button></a>
  </center>
 
 </body>

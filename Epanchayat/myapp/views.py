@@ -1,23 +1,26 @@
 from django.contrib import messages
+from django.contrib.messages.api import error
 from django.http import request
+from django.core.exceptions import ValidationError
 from django.http.response import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render,redirect,HttpResponseRedirect
+from django.shortcuts import  render,redirect,HttpResponseRedirect
 from datetime import  datetime
+from django.db import IntegrityError
 from django.views.generic import TemplateView
 from django.utils.translation import templatize
-from .models import Contact, Feedback,Complaints
+from .models import Contact, Feedback,Complaints, service_C, service_Z
 from django.contrib import messages
 from django.contrib.auth.models import Group
 from django.contrib.auth import authenticate,login as auth_login,login
 from django.contrib.auth import logout , update_session_auth_hash
 from django.contrib.auth import logout as stafflogout
-from .forms import  SignUpForm, EditUserDetailsForm , EditAdminDetailsForm,ServiceRegistration,ServicebForm
+from .forms import  SignUpForm, EditUserDetailsForm , EditAdminDetailsForm,ServiceRegistration,ServicebForm,ServicecForm,ServicezForm,ServiceaForm
 from django.views.decorators.cache import never_cache
 from django.contrib import messages
 from django.contrib.auth.forms import  AuthenticationForm, PasswordChangeForm
 from django.conf import settings
 #from django.views import View
-from .models import User,service,service_A,Service_B
+from .models import User,service,service_A,Service_B,approve1,approve2,approve3,approve4
 from myapp.managers import CustomUserManager
 #from myapp.models import User
 from django.conf import settings
@@ -37,6 +40,27 @@ def index(request):
 
 def home(request):
     return render(request,'home.html')
+
+def big(request):
+    studd= service_A.objects.all()
+    studdd=Service_B.objects.all()
+    return render(request,'big.html',{'stuu':studd,'name':request.user,'stuuu':studdd,'name':request.user})
+
+def big2(request):
+    studdd=Service_B.objects.all()
+    return render(request,'big2.html',{'name':request.user,'stuuu':studdd,})
+
+def big3(request):
+    studdd=service_C.objects.all()
+    return render(request,'big3.html',{'name':request.user,'stuuu':studdd,})
+
+def sz(request):
+    studd=service_Z.objects.all()
+    return render(request,'sz.html',{'name':request.user,'stuu':studd,})
+
+
+def servicestatus(request):
+    return render(request,'servicestatus.html')
 
 def about(request):
     return render(request,'about.html')
@@ -185,9 +209,57 @@ def user_profile(request):
     else:
         return HttpResponseRedirect('/userlogin/')
 
+def showapprove1(request):
+    apr=approve1.objects.all()
+    return render(request,'showapprove1.html',{'apr':apr})
+
+def showapprove2(request):
+    aprr=approve2.objects.all()
+    return render(request,'showapprove2.html',{'aprr':aprr})
+
+def showapprove3(request):
+    aprrr=approve3.objects.all()
+    return render(request,'showapprove3.html',{'aprrr':aprrr})
+
+def showapprove4(request):
+    aprrrr=approve4.objects.all()
+    return render(request,'showapprove4.html',{'aprrrr':aprrrr})
+
 def showappl(request):
         studd= service_A.objects.all()
-        return render(request,'showappl.html',{'stuu':studd,'name':request.user})
+        studdd=Service_B.objects.all()
+        studddd=service_C.objects.all()
+        studdddd=service_Z.objects.all()
+        return render(request,'showappl.html',{'stuu':studd,'stuuu':studdd,'stuuuu':studddd,'stuuuuu':studdddd})
+
+def showappr1(request):
+        studd= service_A.objects.all()
+        return render(request,'approve1.html',{'stuu':studd})
+        
+
+def showappl2(request):
+        studd= service_A.objects.all()
+        studdd=Service_B.objects.all()
+        studddd=service_C.objects.all()
+        studdddd=service_Z.objects.all()
+        return render(request,'showappl2.html',{'stuu':studd,'stuuu':studdd,'stuuuu':studddd,'stuuuuu':studdddd})
+        
+
+def showappl3(request):
+        studd= service_A.objects.all()
+        studdd=Service_B.objects.all()
+        studddd=service_C.objects.all()
+        studdddd=service_Z.objects.all()
+        return render(request,'showappl3.html',{'stuu':studd,'stuuu':studdd,'stuuuu':studddd,'stuuuuu':studdddd})
+        
+def showappl4(request):
+        studd= service_A.objects.all()
+        studdd=Service_B.objects.all()
+        studddd=service_C.objects.all()
+        studdddd=service_Z.objects.all()
+        return render(request,'showappl4.html',{'stuu':studd,'stuuu':studdd,'stuuuu':studddd,'stuuuuu':studdddd})
+        
+
     
 
 def user_logout(request):
@@ -423,6 +495,10 @@ def add_show(request):
             reg=service(service_name=nm,description=dec,requirements=rec)
             reg.user=request.user
             reg.save()
+            messages.success(request, 'Information has been sent...')
+            fm=ServiceRegistration()
+        else:
+            messages.success(request, 'service name is already exist')
             fm=ServiceRegistration()
     else:
         fm=ServiceRegistration()
@@ -430,6 +506,10 @@ def add_show(request):
     stud= service.objects.all()
     return render(request,'svs/addandshow.html',{'form':fm,
     'stu':stud})
+
+def shows(request):
+        stud= service.objects.all()
+        return render(request,'svs/shows.html',{'stu':stud,})
 
 #deleting services
 def delete_service(request,service_id):
@@ -445,52 +525,58 @@ def update_service(request,service_id):
         fm=ServiceRegistration(request.POST,instance=pi)
         if fm.is_valid():
             fm.save()
+            messages.success(request, 'Information has been sent...')
     else:
         pi=service.objects.get(pk=service_id)
         fm=ServiceRegistration(instance=pi)
     return render(request,'svs/updateservice.html',{'form':fm})
 
+#def update_service2(request,job_id):
+    if request.method=="GET":
+                form=ApproveForm()
+                return render(request,'svs/updateservice2.html',{'job_id':job_id,'form':form})
+    if request.method=="POST":
+                form=ApproveForm(request.POST)
+                if form.is_valid():
+                    form.save()
+                    messages.success(request, 'Information has been sent...')
+                    #form=ServicebForm()
+                    return render(request,'svs/updateservice2.html',{'job_id':job_id,'form':form})
+                else:
+                    return render(request,'svs/updateservice2.html',{'job_id':job_id,'form':form})
+    form=ApproveForm()
+    return render(request,'svs/updateservice2.html',{'job_id':job_id,'form':form})
+        #if request.method=='':
+        #pi=Service_B.objects.get(pk=job_id)
+        #fm=ApproveForm(request.POST,instance=pi)
+        #if fm.is_valid():
+            #fm.save()
+            #messages.success(request, 'Information has been sent...')
+    #else:
+        #pi=Service_B.objects.get(pk=job_id)
+        #fm=ApproveForm(instance=pi)
+    #return render(request,'svs/updateservice2.html',{'form':fm})
+
 #application
 def apply_service(request,service_id):
     #service_id=get_object_or_404(service,pk=service_id)
     if service_id==1:
+        if request.method=="GET":
+            form=ServiceaForm()
+            return render(request,'svs/servicea.html',{'service_id':service_id,'form':form})
         if request.method=="POST":
-            service_name=request.POST.get('service_name')
-            user_name=request.POST.get('user_name')
-            #if len(request.FILES)!=0:
-            user_image=request.FILES['user_image']
-            #user_image.save()
-            #messages.success(request,'success')
-            #user_image=request.POST.get('user_image')
-            firstname=request.POST.get('firstname')
-            lastname=request.POST.get('lastname')
-            email=request.POST.get('email')
-            gender=request.POST.get('gender')
-            wardno=request.POST.get('wardno')
-            grampanchayat=request.POST.get('grampanchayat')
-            phone=request.POST.get('phone')
-            village=request.POST.get('village')
-            city=request.POST.get('city')
-            state=request.POST.get('state')
-            pin_code=request.POST.get('pin_code')
-            adhar_no=request.POST.get('adhar_no')
-            adhar_img=request.FILES['adhar_img']
-            #incom_proof=request.FILES.getlist("incom_proof")
-            incom_proof=request.FILES['incom_proof']
-            #for f in incom_proof:
-                #service_A(incom_proof=f).save()
-            vote=request.FILES.getlist("vote")
-            #apply_date=request.POST.get('apply_date')
-            for vote in vote:
-                seervice_A=service_A(service_name=service_name,user_name=user_name,user_image=user_image,firstname=firstname,lastname=lastname,email=email,gender=gender,wardno=wardno,grampanchayat=grampanchayat,phone=phone,village=village,city=city,state=state,pin_code=pin_code,adhar_no=adhar_no,adhar_img=adhar_img, incom_proof= incom_proof,vote=vote,apply_date=datetime.today())
-                seervice_A.user=request.user
-                #seervice_A.service_id=request.service_id
-                seervice_A.save()
+            form=ServiceaForm(request.POST,request.FILES)
+            if form.is_valid():
+                form.save()
                 messages.success(request, 'Information has been sent...')
-        studd= service_A.objects.all()
-        return render(request,'svs/servicea.html',{'service_id':service_id,'stuu':studd})
+                #form=ServicebForm()
+                return render(request,'svs/servicea.html',{'service_id':service_id,'form':form})
+            else:
+                return render(request,'svs/servicea.html',{'service_id':service_id,'form':form})
+        form=ServiceaForm()
+        return render(request,'svs/servicea.html',{'service_id':service_id,'form':form})
     elif service_id==2:
-        form=ServicebForm()
+        #form=ServicebForm()
         if request.method=="GET":
             form=ServicebForm()
             return render(request,'svs/serviceb.html',{'service_id':service_id,'form':form})
@@ -498,17 +584,58 @@ def apply_service(request,service_id):
             form=ServicebForm(request.POST,request.FILES)
             if form.is_valid():
                 form.save()
+                messages.success(request, 'Information has been sent...')
                 #form=ServicebForm()
                 return render(request,'svs/serviceb.html',{'service_id':service_id,'form':form})
             else:
                 return render(request,'svs/serviceb.html',{'service_id':service_id,'form':form})
+        form=ServicebForm()
         return render(request,'svs/serviceb.html',{'service_id':service_id,'form':form})
     elif service_id==3:
-        return render(request,'svs/servicec.html',{'service_id':service_id})
+       if request.method=="GET":
+            formc=ServicecForm()
+            return render(request,'svs/servicec.html',{'service_id':service_id,'formc':formc})
+       if request.method=="POST":
+            formc=ServicecForm(request.POST,request.FILES)
+            if formc.is_valid():
+                formc.save()
+                messages.success(request, 'Information has been sent...')
+                #form=ServicebForm()
+                return render(request,'svs/servicec.html',{'service_id':service_id,'formc':formc})
+            else:
+                return render(request,'svs/servicec.html',{'service_id':service_id,'formc':formc})
+       formc=ServicecForm()
+       return render(request,'svs/servicec.html',{'service_id':service_id,'formc':formc})
     elif service_id==4:
-        return render(request,'svs/serviced.html',{'service_id':service_id})
+        if request.method=="POST":
+            formz=ServicezForm(request.POST,request.FILES)
+            if formz.is_valid():
+                formz.save()
+                messages.success(request, 'Information has been sent...')
+                #form=ServicebForm()
+                return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+            else:
+                return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+        elif request.method=="GET":
+            formz=ServicezForm()
+            return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+        formz=ServicezForm()
+        return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
     else:
-        return render(request,'svs/servicez.html',{'service_id':service_id})
+        if request.method=="POST":
+            formz=ServicezForm(request.POST,request.FILES)
+            if formz.is_valid():
+                formz.save()
+                messages.success(request, 'Information has been sent...')
+                #form=ServicebForm()
+                return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+            else:
+                return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+        elif request.method=="GET":
+            formz=ServicezForm()
+            return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
+        formz=ServicezForm()
+        return render(request,'svs/servicez.html',{'service_id':service_id,'formz':formz})
 
 #def service_A(request):
     #if request.method=="POST":
@@ -524,6 +651,76 @@ def apply_service(request,service_id):
     def get(self,request):
         form=ServicebForm()
         return render(request,'serviceb.html',{'form':form})
+
+
+def approve_service1(request,income_id,):
+        if request.method=="POST":
+                try:
+                    income_no=request.POST.get('income_no')
+                    name=request.POST.get('name')
+                    houseno=request.POST.get('houseno')
+                    decision=request.POST.get('decision')
+                    approvee=approve1(income_no=income_no,name=name,houseno=houseno,decision=decision)
+                    #approve.user=request.user
+                    approvee.save()
+                    messages.success(request, 'Information has been sent...')
+                except IntegrityError:
+                    messages.success(request, 'You have already made decision for this applicant')
+        studd=service_A.objects.all()
+        return render(request,'approve1.html',{'income_id':income_id,'stuu':studd})
+    #return HttpResponse('contact')
+
+def approve_service2(request,job_id,):
+        if request.method=="POST":
+                try:
+                    job_no=request.POST.get('job_no')
+                    name=request.POST.get('name')
+                    email=request.POST.get('email')
+                    decision=request.POST.get('decision')
+                    approvee=approve2(job_no=job_no,name=name,email=email,decision=decision,)
+                    #approve.user=request.user
+                    approvee.save()
+                    messages.success(request, 'Information has been sent...')
+                except IntegrityError:
+                    messages.success(request, 'You have already made decision for this candidate')
+        studdd=Service_B.objects.all()
+        return render(request,'approve2.html',{'job_id':job_id,'stuuu':studdd})
+
+def approve_service3(request,gas_id,):
+        if request.method=="POST":
+                try:
+                    gas_no=request.POST.get('gas_no')
+                    name=request.POST.get('name')
+                    ration_no=request.POST.get('ration_no')
+                    decision=request.POST.get('decision')
+                    approvee=approve3(gas_no=gas_no,name=name,ration_no=ration_no,decision=decision)
+                    #approve.user=request.user
+                    approvee.save()
+                    messages.success(request, 'Information has been sent...')
+                except IntegrityError:
+                    messages.success(request, 'You have already made decision for this ration no')
+        studdd=service_C.objects.all()
+        return render(request,'approve3.html',{'gas_id':gas_id,'stuuuu':studdd})
+
+def approve_service4(request,curr_id,):
+        if request.method=="POST":
+                try:
+                    curr_no=request.POST.get('curr_no')
+                    service_name=request.POST.get('service_name')
+                    keyno=request.POST.get('keyno')
+                    decision=request.POST.get('decision')
+                    approvee=approve4(curr_no=curr_no,service_name=service_name,keyno=keyno,decision=decision,)
+                    #approve.user=request.user
+                    approvee.save()
+                    messages.success(request, 'Information has been sent...')
+                except IntegrityError:
+                    messages.success(request, 'You have already made decision for this keyno')
+                    
+                
+        studdd=service_Z.objects.all()
+        return render(request,'approve4.html',{'curr_id':curr_id,'stuuuuu':studdd})
+
+
 
 
 

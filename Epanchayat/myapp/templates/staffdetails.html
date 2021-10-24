@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Details</title>
     <style>
+        #id_username
+        {
+            width: 30%;
+            height: 20px;
+            left: 50px;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 5px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 15px;
+            margin-bottom: 0px;
+            border-color: rgb(24, 11, 143);
+            box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+            transition: .3s;
+        }
             .er{color: red;}
             #id_gender
             {
@@ -139,7 +154,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">&emsp;
-                  <a id="id1" class="navbar-brand" href="/staffprofile">
+                  <a id="id1" class="navbar-brand" href="/addandshow">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                       <i class="fa fa-arrow-left"></i>
@@ -147,7 +162,7 @@
                   </a>&ensp;&nbsp;
                       <a id="id1" class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
                       <a  id="id1"class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
-                      <a id="id1" class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+                      <a id="id1" class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
                       <a id="id1" class="nav-item nav-link" href="{% url 'stafflogout' %}"><i class="fa fa-sign-out"></i>logout</a>
                      <!-- <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>-->
                 </div>

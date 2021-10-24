@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Service-A</title>
+    <link rel="stylesheet" href="fcf-assets/css/fcf.materialize.min.css">
+    <script>
+        function validateForm()
+        {
+            let x=document.forms["myForm"]["Name"].value;
+            if(x=="")
+            {
+                alert("UserName must be filled out");
+                return false;
+            }
+            let y=document.forms["myForm"]["Email"].value;
+            if(y=="")
+            {
+                alert("Email must be filled out");
+                return false;
+            }
+            let z=document.forms["myForm"]["phone"].value;
+            if(z=="")
+            {
+                alert("Please Enter Mobile Number ");
+                return false;
+            }
+            let a=document.forms["myForm"]["GramPanchayat"].value;
+            if(a=="")
+            {
+                alert("Gram Panchayat must be filled out");
+                return false;
+            }
+            let b=document.forms["myForm"]["rate"].value;
+            if(b=="")
+            {
+                alert("Please slect your Feedback Range");
+                return false;
+            }
+
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@300;500&display=swap');  
+        form
+        {
+            padding: 20px;
+            margin-top: 0%;
+        }
+        #fcf-button
+        {
+            border-color: darkcyan;
+            font-family: fantasy;
+            display: flex;
+            margin: auto;
+            font-size: 90%;
+        }
+        nav
+     {
+         margin: 0px;
+         padding-top: 0px;
+         box-sizing: border-box;
+         font-family: 'Big Shoulders Stencil Display', cursive;
+         width: 100%;
+         height: 8%;
+         background-color:  #505d61;
+         line-height: 70px;
+         /*padding: 0px 100px;*/
+         position: fixed;
+        /* z-index: 1;*/
+     }
+        nav .logo
+        {
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding-top: 0%;
+        }
+        nav .logo
+        {
+            float: left;
+            color:#fff;
+            text-transform: uppercase;
+        }
+        nav ul
+        {
+            float:right ;
+            display:inline-flex;
+        }
+        #dd
+        {
+            background-color: blueviolet;
+            width: 25%;
+            height: 20%;
+            float: right;
+            margin-top: -46%;
+            border-radius: 5px;
+            box-shadow: yellowgreen;
+        }
+        nav ul li
+        {
+            display:inline-flex;
+            list-style: none;
+            margin-top: -7%;
+            padding-top: 0%;
+        }
+        nav ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 0px 32px;
+            padding-top: 0%
+        }
+        nav ul li a:hover
+        {
+            color: #c0d96f;
+        }
+        nav ul li .active
+        {
+            color: #c0d96f;
+        }
+        nav button
+        {
+            margin-top: 13px;
+            margin-left: 2px;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+       input[type="file"]
+       {
+           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 1;
+        }
+        table td
+        {
+            
+            background-color: #fff;
+            border-collapse: separate;
+        }
+        .custom-file-upload
+        {
+            /*border: 1px solid rgb(16, 238, 182);*/
+            display: inline-block;
+            padding: 1px 1px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        #ur
+        {
+            margin-top: -30px;
+            margin-left: 2px;
+            position: absolute;
+            top: 0%;
+            left: 4%;
+            color: cyan;
+        }
+        #ur :hover
+        {
+            color: crimson;
+        }
+        h1
+        {
+            
+            
+            background-color:rgb(17, 212, 153) ;
+            text-align: center;
+        }
+        input
+        {
+            margin-bottom: 3%;
+            border-color: cyan;
+        }
+        select
+        {
+            border-color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <nav>
+        <div class="logo">
+            <a class="navbar-brand" href="/applyservice">
+               <!--- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+                  <i class="fa fa-arrow-left"></i>
+                </button>-->
+            </a>
+            <a id="ur" class="w3-tiny" href="/userdetails"><font size="5"><i class="fa fa-user"></i></a>
+        </div>
+        <ul>
+            <li><a href="/" >Home</a></li>
+            <li><a href="" class="active">House Income </a></li>
+            <li><a href="/aboutus">About</a></li>
+            <li><a href="/contact">Contact us</a></li>
+            <li><a href="/complaints">Complaints</a></li>
+        </ul>
+    </nav>
+<div style="max-width:500px;padding:30px;padding-top:0px">
+    <div id="fcf-form">
+        <form name="myForm"  class="col s12 fcf-form-class" method="POST" action="" onsubmit="return validateForm()"  >
+        {% csrf_token %}
+
+        {% if messages %} 
+    {% for message in messages %}
+        <small {% if message.tags %} class="{{message.tags}}" {% endif %}><font color="lightgreen"><h5> {{message}}</h5> </font></small>
+    {% endfor %}
+{% endif %}
+            <h1><span style="font-style: normal; font-weight: 400;">Approve/decline &nbsp; Form</span></h1>
+            <div class="row">
+              <div class="input-field col s12">
+                  <label for="curr_id">Application id :</label>
+                  <input  type="number" required name="curr_no" id="curr_no" maxlength="60"  value="{{curr_id}}">
+                 
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+                <label for="service_name">Service_name:</label>
+                <input  type="text" required name="service_name" id="service_name" maxlength="60"  placeholder="Enter Service name">
+               
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="keyno">Key no:</label>
+                <input  type="text" required name="keyno" id="keyno" maxlength="60"  placeholder="Enter applicant key">
+               
+            </div>
+        </div> 
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <label  for="decision">Decision:</label><br>
+                    <input type="radio" id="Approve" name="decision" required value="Approved"/>Approve
+                    <br>
+                    <input type="radio" id="Decline" name="decision" value="Declined"/>Decline
+                    <br>
+                    
+                </div>
+            </div>
+            
+            
+               
+</div>
+
+</div>
+<div id="dd">
+    <h3> <font color="yellowgreen">Applicant info</font></h3>
+    <table id="table">
+        
+    <tr><u>
+        <th>Service</th>
+        <th>KeyNo</th></u>
+    </tr>
+    {% for st in stuuuuu %}
+            <tr>
+                <td>{{st.service_name}}</td> 
+                <td>{{st.keyno}}</td>
+            </tr>      
+    {% endfor %}
+</table>
+</div>    
+</div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <button id="fcf-button" class="btn waves-effect waves-light btn-large col s12" type="submit" name="submit">SUBMIT</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

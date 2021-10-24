@@ -9,7 +9,7 @@ from django.db.models.deletion import PROTECT
 from django.db.models.enums import Choices
 from django.db.models.manager import Manager
 from django.forms import widgets
-from django.forms.widgets import DateTimeInput, Widget
+from django.forms.widgets import DateTimeInput, TextInput, Widget
 from django.contrib.auth.models import AbstractUser,AbstractBaseUser,PermissionsMixin
 from datetime import date, datetime, timezone
 from django.utils.translation import gettext_lazy as _
@@ -35,7 +35,7 @@ from myapp.managers import CustomUserManager
 
 class User(AbstractBaseUser,PermissionsMixin):
    user_id=models.AutoField(primary_key=True) 
-   username=models.CharField(max_length=30,unique=True)
+   username=models.TextField(max_length=30,unique=True)
    first_name=models.CharField(max_length=150)
    last_name=models.CharField(max_length=150,blank=True)
    #start_date=models.DateTimeField()
@@ -136,30 +136,36 @@ class Complaints(models.Model):
 class service(models.Model):
     service_id=models.AutoField(primary_key=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE,default=True)
-    service_name=models.CharField(max_length=50,unique=True,blank=True)
+    service_name=models.CharField(max_length=50,unique=True)
     description=models.CharField(max_length=100,blank=True)
     requirements=models.CharField(max_length=300,blank=True)
     #service_req_id=models.ForeignKey(service_req_id,on_delete=models.CASCADE)
     #user=models.ForeignKey(User,on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.service_name
+    #def __str__(self):
+        #return self.service_name
 
 class service_A(models.Model):
-    ration_id=models.AutoField(primary_key=True)
-    service_id=models.ForeignKey(service,on_delete=models.PROTECT,default="1")
-    user=models.ForeignKey(User,on_delete=models.PROTECT,default="",null=True)
+    income_id=models.AutoField(primary_key=True)
+    servicea_id=models.ForeignKey(service,on_delete=models.CASCADE,default="1")
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
     service_name=models.CharField(max_length=50,blank=True)
+    house_no=models.CharField(max_length=8,unique=True,blank=True)
     user_name=models.CharField(max_length=100,default="")
     user_image=models.FileField(blank=True,upload_to="images/")
     firstname= models.CharField(max_length=122)
     lastname=models.CharField(max_length=250,blank=True)
     email=models.EmailField(max_length=30)
-    GENDER_CHOICE=(('Male','Male'),('Female','Female'),('I prefer not to say','I prefer not to say'))
+    GENDER_CHOICE=(('Male','Male'),('Female','Female'),('Others','Others'))
     gender = models.CharField(max_length=20,choices=GENDER_CHOICE,blank=True)
     wardno=models.IntegerField(default=0)
     GRAM_CHOICE=(('Aloor','Aloor'),('Harkur','Harkur'))
-    grampanchayat=models.CharField(max_length=40,blank=True,choices=GRAM_CHOICE)
+    PANCHAYAT=(
+    ('aloor','aloor'),
+    ('kota','kota'),
+    ('Kundapur','Kundapur')
+)
+    grampanchayat=models.CharField(max_length=40,blank=True,choices=PANCHAYAT)
     phone=models.CharField(null=True,max_length=12)
     village=models.CharField(_("address"), max_length=150)
     city=models.CharField(_("city"), max_length=100,default="kundapura")
@@ -182,19 +188,23 @@ STATE_CHOICE=(
 )
 PANCHAYAT=(
     ('aloor','aloor'),
-    ('kota','kota')
+    ('kota','kota'),
+    ('Kundapur','Kundapur')
 )
 JOB_PANCHAYAT=(
     ('Aloor','Aloor'),
     ('Kota','Kota'),
-    ('Andrapradesh','Andrapradesh')
+    ('Kundapur','Kundapur')
 )
 GENDER_CHOICE=(
-    ('MAKE','MALE'),
+    ('MALE','MALE'),
     ('FEMALE','FEMALE'),
     ('OTHERS','OTHERS')
 )
 class Service_B(models.Model):
+    job_id=models.AutoField(primary_key=True)
+    serviceb_id=models.ForeignKey(service,on_delete=models.PROTECT,default="2")
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
     name = models.CharField(max_length=100)
     dob=models.DateField(auto_now=False,auto_now_add=False)
     gender=models.CharField(max_length=50,choices=GENDER_CHOICE)
@@ -202,15 +212,49 @@ class Service_B(models.Model):
     city=models.CharField(max_length=100)
     pin=models.PositiveIntegerField()
     state=models.CharField(choices=STATE_CHOICE,max_length=100)
-    mobile=models.PositiveIntegerField()
-    email=models.EmailField()
+    mobile=models.CharField(max_length=12)
+    email=models.EmailField(unique=True)
     panchayat=models.CharField( choices=PANCHAYAT,max_length=100)
     job_panchayat=models.CharField(choices=JOB_PANCHAYAT,max_length=100)
-    profile_img=models.ImageField(upload_to='profileimg',blank=True)
+    profile_img=models.FileField(upload_to='profileimg',blank=True)
+    hscssc=models.FileField(upload_to='school',blank=True)
     document=models.FileField(upload_to='doc',blank=True)
 
+
+    def __str__(self):
+        return self.email
+
 class service_C(models.Model):
+    gas_id=models.AutoField(primary_key=True)
+    servicec_id=models.ForeignKey(service,on_delete=models.PROTECT,default="3")
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
     name = models.CharField(max_length=100)
+    ration_no=models.CharField(max_length=10,unique=True,blank=True)
+    gender=models.CharField(max_length=50,choices=GENDER_CHOICE)
+    village=models.CharField(max_length=100)
+    city=models.CharField(max_length=100)
+    pin=models.PositiveIntegerField()
+    state=models.CharField(choices=STATE_CHOICE,max_length=100)
+    mobile=models.PositiveIntegerField()
+    email=models.EmailField()
+    panchayat=models.CharField(choices=PANCHAYAT,max_length=100)
+    bpl_img=models.FileField(upload_to='rationimg',blank=True)
+    adhar_img=models.FileField(upload_to='adharimg',blank=True)
+    bnk_img=models.FileField(upload_to='bankimg',blank=True)
+    user_img=models.FileField(upload_to='profileimg',blank=True)
+
+
+    def __str__(self):
+        return self.name
+
+
+class service_Z(models.Model):
+    curr_id=models.AutoField(primary_key=True)
+    servicez_id=models.ForeignKey(service,on_delete=models.PROTECT,default="4")
+    user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
+    service_name = models.CharField(max_length=100,null=True,default="")
+    name = models.CharField(max_length=100)
+    house_no=models.CharField(max_length=8,blank=True)
     dob=models.DateField(auto_now=False,auto_now_add=False)
     gender=models.CharField(max_length=50,choices=GENDER_CHOICE)
     village=models.CharField(max_length=100)
@@ -220,12 +264,84 @@ class service_C(models.Model):
     mobile=models.PositiveIntegerField()
     email=models.EmailField()
     panchayat=models.CharField(choices=PANCHAYAT,max_length=100)
+    keyno=models.CharField(max_length=80,unique=True)
+    bpl_img=models.FileField(upload_to='rationimg',blank=True)
+    adhar_img=models.FileField(upload_to='adharimg',blank=True)
+    bnk_img=models.FileField(upload_to='bankimg',blank=True)
+    user_img=models.FileField(upload_to='profileimg',blank=True)
+    vote_img=models.FileField(upload_to='voteimg',blank=True)
+    pan_img=models.FileField(upload_to='panimg',blank=True)
+    incm_img=models.FileField(upload_to='incmimg',blank=True)
+    cst_img=models.FileField(upload_to='cstimg',blank=True)
+    scldoc=models.FileField(upload_to='sclimg',blank=True)
+    otdc_img=models.FileField(upload_to='panimg',blank=True)
+
+    def __str__(self):
+        return self.service_name
+
+DECISION_CHOICE=(
+    ('APPROVE','APPROVE'),
+    ('DECLINE','DECLINE'),
+)
+class approve1(models.Model):
+    app_id=models.AutoField(primary_key=True)
+    #serviceb_id=models.ForeignKey(service,on_delete=models.PROTECT,null=True)
+    #email=models.ForeignKey(Service_B,on_delete=models.CASCADE,default="")
+    income_no=models.CharField(max_length=300,blank=True,null=True,unique=True)
+    name=models.CharField(max_length=100,default="")
+    houseno=models.CharField(max_length=8,unique=True,blank=True)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
+    decision=models.CharField(max_length=50,null=True)
+
+    def __str__(self):
+        return self.decision
+
+
+class approve2(models.Model):
+    app_id=models.AutoField(primary_key=True)
+    #serviceb_id=models.ForeignKey(service,on_delete=models.PROTECT,null=True)
+    #email=models.ForeignKey(Service_B,on_delete=models.CASCADE,default="")
+    job_no=models.CharField(max_length=300,blank=True,null=True,unique=True)
+    name = models.CharField(max_length=100)
+    email=models.EmailField(unique=True)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
+    decision=models.CharField(max_length=50,null=True)
+
+    def __str__(self):
+        return self.decision
+
+class approve3(models.Model):
+    app_id=models.AutoField(primary_key=True)
+    #serviceb_id=models.ForeignKey(service,on_delete=models.PROTECT,null=True)
+    #email=models.ForeignKey(Service_B,on_delete=models.CASCADE,default="")
+    gas_no=models.CharField(max_length=300,blank=True,null=True,unique=True)
+    name = models.CharField(max_length=100)
+    ration_no=models.CharField(max_length=10,unique=True,blank=True)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
+    decision=models.CharField(max_length=50,null=True)
+
+    def __str__(self):
+        return self.decision
+
+class approve4(models.Model):
+    app_id=models.AutoField(primary_key=True)
+    #serviceb_id=models.ForeignKey(service,on_delete=models.PROTECT,null=True)
+    #email=models.ForeignKey(Service_B,on_delete=models.CASCADE,default="")
+    curr_no=models.CharField(max_length=300,blank=True,null=True,unique=True)
+    service_name = models.CharField(max_length=100,null=True,default="abcd")
+    keyno=models.CharField(max_length=80,unique=True,blank=True)
+    #user=models.ForeignKey(User,on_delete=models.CASCADE,default="",null=True)
+    decision=models.CharField(max_length=50,null=True)
+
+    def __str__(self):
+        return self.decision
+
+    
     
 
 class imgsall(models.Model):
     allimg=models.ImageField(upload_to='allimg',blank=True)
     document=models.FileField(upload_to='document',blank=True)
-
 
     
 

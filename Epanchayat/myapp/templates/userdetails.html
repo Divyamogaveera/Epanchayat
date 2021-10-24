@@ -54,6 +54,21 @@
             box-shadow: 0 0 8px 0 rgb(10, 191, 236);
             transition: .3s;
         }
+        #id_username
+        {
+            width: 30%;
+            height: 20px;
+            left: 50px;
+            border: 1px solid rgba(100, 6, 207, 0.877);
+            border-radius: 5px;
+            padding: 3px;
+            border-spacing: 1%;
+            margin-bottom: 15px;
+            margin-bottom: 0px;
+            border-color: rgb(24, 11, 143);
+            box-shadow: 0 0 8px 0 rgb(10, 191, 236);
+            transition: .3s;
+        }
         form input[type="email"]
         {
             width: 28%;
@@ -136,14 +151,11 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">&emsp;
               <a id="id1" class="navbar-brand" href="/profile">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-                  <i class="fa fa-arrow-left"></i>
-                </button>
+               
               </a>&ensp;&nbsp;
                   <a id="id1" class="nav-item nav-link active" href="/"><i class="fa fa-home"></i>Home <span class="sr-only">(current)</span></a>&ensp;&nbsp;
                   <a  id="id1"class="nav-item nav-link" href="/contact"><i class="fa fa-comment"></i>Contact us</a>&ensp;&nbsp;
-                  <a id="id1" class="nav-item nav-link" href="/about"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
+                  <a id="id1" class="nav-item nav-link" href="/aboutus"><i class="fa fa-book" aria-hidden="true"></i> About us</a>&ensp;&nbsp;
                   <a id="id1" class="nav-item nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>logout</a>
                  <!-- <a id="logo" class="nav-item nav-link" href="/userdetails"><i class="fa fa-user"></i></a>-->
             </div>
@@ -180,16 +192,7 @@
                     {% endfor %}
                 </div>
             {% endif %}
-            <!--{% if users == None %}
-                
-                    <h3>List of users</h3>
-                    <div id="scroll">
-                        {% if user %}
-                            <a href="{% url 'pusers' user.id %}">{{user.username}}</a><br>
-                        {% endif %}
-                    </div>
-                
-            {% endif %}-->
+          
             <br>
 
         </form>
