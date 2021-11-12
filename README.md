@@ -8,5 +8,5 @@ to provide information about panchayat services to all the village people.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
 
