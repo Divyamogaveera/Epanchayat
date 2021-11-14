@@ -9,6 +9,8 @@ to provide information about panchayat services to all the village people.
 ## Screenshots
 
 ![home](https://user-images.githubusercontent.com/85350201/141525200-7eaddcc7-cdc6-419a-9968-caefeb33579f.png)
+![66](https://user-images.githubusercontent.com/85350201/141670417-b2cdf58b-e583-43f1-a619-3afcd8b6112c.png)
+
 ![3](https://user-images.githubusercontent.com/85350201/141668974-04bf167a-b02a-4851-8745-4f781d308c58.png)
 ![er](https://user-images.githubusercontent.com/85350201/141668989-713c9ed0-6ee8-4da3-8f21-626091400833.jpg)
 ![1](https://user-images.githubusercontent.com/85350201/141669201-0ba8bb45-8ddf-4a8b-a1f6-cc41ece101cc.png)
